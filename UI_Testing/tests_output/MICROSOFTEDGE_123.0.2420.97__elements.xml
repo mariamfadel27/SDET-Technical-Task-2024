@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="elements"
+    errors="0" failures="0" hostname="" id="" package="elements" skipped="0"
+    tests="1" time="8.545" timestamp="">
+  
+    <testcase name="Extract product name from HTML" classname="elements" time="1.412" assertions="1">
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="1">
+
+  <testsuite name="Search_Dress_no_failure_assertions"
+    errors="1" failures="0" hostname="" id="" package="Search_Dress_no_failure_assertions" skipped="0"
+    tests="1" time="7.023" timestamp="">
+  
+    <testcase name="Verify product names contain &#34;dress&#34;" classname="Search_Dress_no_failure_assertions" time="0.05500" assertions="0">
+    <error message="No selector property for element &#34;getProductLink&#34;. Instead found properties: " type="error"><![CDATA[
+    Error: No selector property for element &#34;getProductLink&#34;. Instead found properties: 
+    at Element.setProperties (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\element\index.js:72:13)
+    at new Element (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\element\index.js:32:10)
+    at C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\page-object\base-object.js:50:32
+    at Array.forEach (&lt;anonymous&gt;)
+    at C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\page-object\base-object.js:40:24
+    at Array.forEach (&lt;anonymous&gt;)
+    at Page.createElements (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\page-object\base-object.js:39:14)
+    at new Page (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\page-object\index.js:51:28)
+    at PageObjectLoader.pageObjectDefinition (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\api\_loaders\page-object.js:56:12)
+    at Verify product names contain &#34;dress&#34; (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\Search_Dress_no_failure_assertions.js:12:18)
+    ]]></error>
+    
+    </testcase>
+  
+
+  
+    <system-err>
+       Error
+   No selector property for element &#34;getProductLink&#34;. Instead found properties: 
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\Search_Dress_no_failure_assertions.js:12
+    ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     10 |   &#39;Verify product names contain &#34;dress&#34;&#39;: function(browser) {
+     11 |     // Search for &#34;dress&#34;
+     12 |     browser.page.homepage() 
+     13 |       .searchForDress(&#39;dress&#39;)
+     14 |       .waitForElementVisible(&#39;#product_list &gt; li&#39;, 5000, function() {
+    ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+    </system-err>
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="yarab2"
+    errors="0" failures="0" hostname="" id="" package="yarab2" skipped="0"
+    tests="1" time="8.771" timestamp="">
+  
+    <testcase name="Verify product names contain &#34;dress&#34;" classname="yarab2" time="1.503" assertions="1">
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>
