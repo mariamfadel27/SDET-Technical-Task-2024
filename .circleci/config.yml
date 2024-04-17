@@ -21,9 +21,16 @@ jobs:
           name: Check install
           
           
+      # Download GeckoDriver
       - run:
-          name: Change Chromedriver permissions
-          command: sudo chmod +x /usr/local/bin/chromedriver
+          name: Download GeckoDriver
+          command: |
+            mkdir -p ~/geckodriver
+            curl -L https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz | tar xz -C ~/geckodriver
+      # Set GeckoDriver path
+      - run:
+          name: Set GeckoDriver path
+          command: echo 'export PATH=$PATH:$HOME/geckodriver' >> $BASH_ENV && source $BASH_ENV
       - node/install-packages:
           pkg-manager: npm
       - run:
