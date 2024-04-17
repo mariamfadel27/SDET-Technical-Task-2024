@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test",
+    "test-html": "mocha --reporter mochawesome",
     "test-Create_user": "mocha test/Create_user.js",
     "test-delete_by_token_all_users": "mocha test/delete_by_token_all_users.js",
     "test-GET_PATCH_USER_BY_TOKEN": "mocha test/GET_PATCH_USER_BY_TOKEN.js",
@@ -24,6 +25,7 @@
     "chai-http": "^4.4.0",
     "faker": "^5.5.3",
     "mocha": "^10.4.0",
+    "mochawesome": "^7.1.3",
     "supertest": "^6.3.4"
   },
   "dependencies": {
