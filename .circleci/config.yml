@@ -31,7 +31,7 @@ jobs:
           command: chmod +x node_modules/.bin/nightwatch
       - run:
           name: Run Nightwatch tests with Firefox
-          command: npx nightwatch --env firefox --config nightwatch.firefox.conf.js
+          command: npx nightwatch --env firefox --config config/nightwatch.firefox.conf.js
 
   APItests:
     # Build node project
