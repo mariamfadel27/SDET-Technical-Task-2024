@@ -1,124 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="1"
-            tests="1">
+            failures="0"
+            tests="6">
 
   <testsuite name="SubmitForm_Test"
-    errors="0" failures="1" hostname="" id="" package="SubmitForm_Test" skipped="5"
-    tests="1" time="37.58" timestamp="">
+    errors="0" failures="0" hostname="" id="" package="SubmitForm_Test" skipped="0"
+    tests="6" time="131.8" timestamp="">
   
-    <testcase name="My first test case all enteries are given happy scenario " classname="SubmitForm_Test" time="18.79" assertions="1">  <failure message="Timed out while waiting for element &lt;body&gt; to be present for 5000 milliseconds. - expected &#34;visible&#34; but got: &#34;not found&#34; (5046ms)">    at My first test case all enteries are given happy scenario  (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:16:12)</failure>
+    <testcase name="My first test case all enteries are given happy scenario " classname="SubmitForm_Test" time="19.24" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="My second test case-submit file" classname="SubmitForm_Test" time="12.38" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="My third test case-No email" classname="SubmitForm_Test" time="7.870" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="My fourth test case-No subject header is selected " classname="SubmitForm_Test" time="8.915" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="fifth test case: message is missing(it&#39;s required field should be provided)" classname="SubmitForm_Test" time="7.759" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="sixth test case:(reference order ,file attachement not required)-&gt;form will be submitted regarding their non-existance" classname="SubmitForm_Test" time="9.746" assertions="2">
+
+    
 
     
     </testcase>
   
 
-  
-    <system-err>
-       NoSuchElementError
-   An element could not be located on the page using the given search parameters.
-    {&#34;error&#34;:{&#34;name&#34;:&#34;NoSuchWindowError&#34;,&#34;remoteStacktrace&#34;:&#34;&#34;},&#34;status&#34;:-1,&#34;value&#34;:null}
-
-    Try fixing by :
-    1. Please inspect the html before the step
-    2. Verify if an element with the mentioned selector is present in the DOM tree
-
-    Error location:
-    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SearchDressNF.js:13
-    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-     11 |     // Search for &#34;dress&#34;
-     12 |     browser.page.homepage()
-     13 |       .searchForDress(&#39;dress&#39;) 
-     14 |       .waitForElementVisible(&#39;#product_list &gt; li&#39;, 5000, function() {
-     15 |         // Get the count of products
-    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-
- NoSuchElementError
-   An element could not be located on the page using the given search parameters.
-    {&#34;error&#34;:{&#34;name&#34;:&#34;NoSuchWindowError&#34;,&#34;remoteStacktrace&#34;:&#34;&#34;},&#34;status&#34;:-1,&#34;value&#34;:null}
-
-    Try fixing by :
-    1. Please inspect the html before the step
-    2. Verify if an element with the mentioned selector is present in the DOM tree
-
-    Error location:
-    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SearchDressNF.js:13
-    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-     11 |     // Search for &#34;dress&#34;
-     12 |     browser.page.homepage()
-     13 |       .searchForDress(&#39;dress&#39;) 
-     14 |       .waitForElementVisible(&#39;#product_list &gt; li&#39;, 5000, function() {
-     15 |         // Get the count of products
-    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-
- NoSuchElementError
-   An element could not be located on the page using the given search parameters.
-    {&#34;error&#34;:{&#34;name&#34;:&#34;NoSuchWindowError&#34;,&#34;remoteStacktrace&#34;:&#34;&#34;},&#34;status&#34;:-1,&#34;value&#34;:null}
-
-    Try fixing by :
-    1. Please inspect the html before the step
-    2. Verify if an element with the mentioned selector is present in the DOM tree
-
-    Error location:
-    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SearchDressFail.js:13
-    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-     11 |     // Search for &#34;dress&#34;
-     12 |     browser.page.homepage()
-     13 |       .searchForDress(&#39;dress&#39;) 
-     14 |       .waitForElementVisible(&#39;#product_list &gt; li&#39;, 5000, function() {
-     15 |         // Get the count of products
-    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-
- NoSuchElementError
-   An element could not be located on the page using the given search parameters.
-    {&#34;error&#34;:{&#34;name&#34;:&#34;NoSuchWindowError&#34;,&#34;remoteStacktrace&#34;:&#34;&#34;},&#34;status&#34;:-1,&#34;value&#34;:null}
-
-    Try fixing by :
-    1. Please inspect the html before the step
-    2. Verify if an element with the mentioned selector is present in the DOM tree
-
-    Error location:
-    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SearchDressFail.js:13
-    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-     11 |     // Search for &#34;dress&#34;
-     12 |     browser.page.homepage()
-     13 |       .searchForDress(&#39;dress&#39;) 
-     14 |       .waitForElementVisible(&#39;#product_list &gt; li&#39;, 5000, function() {
-     15 |         // Get the count of products
-    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-
-    </system-err>
   
 
     
 
-  
-    
-    <testcase
-      name="My second test case-submit file" classname="SubmitForm_Test">
-      <skipped />
-    </testcase>
-    
-    <testcase
-      name="My third test case-No email" classname="SubmitForm_Test">
-      <skipped />
-    </testcase>
-    
-    <testcase
-      name="My fourth test case-No subject header is selected " classname="SubmitForm_Test">
-      <skipped />
-    </testcase>
-    
-    <testcase
-      name="fifth test case: message is missing(it&#39;s required field should be provided)" classname="SubmitForm_Test">
-      <skipped />
-    </testcase>
-    
-    <testcase
-      name="sixth test case:(reference order ,file attachement not required)-&gt;form will be submitted regarding their non-existance" classname="SubmitForm_Test">
-      <skipped />
-    </testcase>
-    
   
   </testsuite>
 </testsuites>
