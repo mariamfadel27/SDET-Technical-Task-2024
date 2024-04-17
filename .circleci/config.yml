@@ -3,26 +3,18 @@
 version: 2.1
 orbs:
   node: circleci/node@5
-  browser-tools: circleci/browser-tools@1.4.6
+  browser-tools: circleci/browser-tools@1.1.0
 jobs:
   UItests:
     # Build node project
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/UI_Testing
+    docker:
+      - image: cimg/node:lts-browsers
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
-      # Download GeckoDriver
-      - run:
-          name: Download GeckoDriver
-          command: |
-            mkdir -p ~/geckodriver
-            curl -L https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz | tar xz -C ~/geckodriver
-      # Set GeckoDriver path
-      - run:
-          name: Set GeckoDriver path
-          command: echo 'export PATH=$PATH:$HOME/geckodriver' >> $BASH_ENV && source $BASH_ENV
-          
+      - browser-tools/install-browser-tools
       - node/install-packages:
           pkg-manager: npm
       - run:
