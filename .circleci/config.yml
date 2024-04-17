@@ -22,6 +22,7 @@ jobs:
       - run:
           name: Set GeckoDriver path
           command: echo 'export PATH=$PATH:$HOME/geckodriver' >> $BASH_ENV && source $BASH_ENV
+          
       - node/install-packages:
           pkg-manager: npm
       - run:
