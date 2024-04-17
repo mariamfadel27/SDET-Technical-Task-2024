@@ -1,0 +1,24 @@
+version: 2.1
+jobs:
+  run_api_tests:
+    docker:
+      - image: circleci/node:latest
+    working_directory: C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\API_TEST
+    steps:
+      - checkout
+      - run:
+          name: Start API Server
+          command: npm run dev 8080
+          background: true
+      - run:
+          name: Run API Tests
+          command: npm test
+  run_ui_tests:
+    docker:
+      - image: circleci/node:latest
+    working_directory: C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing
+    steps:
+      - checkout
+      - run:
+          name: Run UI Tests
+          command: npx nightwatch -e edge
