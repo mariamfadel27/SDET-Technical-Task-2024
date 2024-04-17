@@ -13,10 +13,21 @@ jobs:
           path: ~/SDET-Technical-Task-2024
       - node/install-packages:
           pkg-manager: npm
+      
       - run:
-          name: Install dependencies
-          command: npm test
+          name: Change mock-user-auth permissions
+          command: chmod +x ./node_modules/mock-user-auth/bin/www.js
+      - run:
+          name: Start backend server
+          command: npm run dev 8080 & sleep 10 & npm test
+          
 workflows:
   build:
     jobs:
       - UItests
+
+      
+
+
+
+      
