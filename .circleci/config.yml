@@ -15,7 +15,7 @@ jobs:
           pkg-manager: npm
       - run:
           name: Install dependencies
-          command: npm install 
+          command: npx nightwatch 
 workflows:
   build:
     jobs:
