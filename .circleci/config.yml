@@ -4,6 +4,25 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
+  APItests:
+    # Build node project
+    executor: node/default
+    working_directory: ~/SDET-Technical-Task-2024/UI_Testing
+    steps:
+      - checkout:
+          path: ~/SDET-Technical-Task-2024
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          name: Install Nightwatch
+          command: npm install nightwatch
+      - run:
+          name: Change Nightwatch permissions
+          command: sudo chmod +x node_modules/.bin/nightwatch
+      - run:
+          name: Run Nightwatch tests
+          command: sudo npx nightwatch
+
   UItests:
     # Build node project
     executor: node/default
@@ -29,7 +48,7 @@ jobs:
 workflows:
   build:
     jobs:
-      - UItests
+      - APItests
 
       
 
