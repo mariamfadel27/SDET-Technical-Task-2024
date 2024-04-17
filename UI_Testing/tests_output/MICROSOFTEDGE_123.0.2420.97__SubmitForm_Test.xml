@@ -1,66 +1,226 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites errors="0"
-            failures="0"
-            tests="7">
+<testsuites errors="9"
+            failures="1"
+            tests="1">
 
   <testsuite name="SubmitForm_Test"
-    errors="0" failures="0" hostname="" id="" package="SubmitForm_Test" skipped="0"
-    tests="7" time="201.0" timestamp="">
+    errors="9" failures="1" hostname="" id="" package="SubmitForm_Test" skipped="6"
+    tests="1" time="139.8" timestamp="">
   
-    <testcase name="My first test case all enteries are given happy scenario " classname="SubmitForm_Test" time="21.19" assertions="2">
+    <testcase name="My first test case all enteries are given happy scenario " classname="SubmitForm_Test" time="69.91" assertions="2">
+
+      <failure message="Testing if element &lt;Element [name=@successMessageSelector]&gt; is visible in 5000ms - expected &#34;is visible&#34; but got: &#34;element could not be located&#34; (5102ms)">    at My first test case all enteries are given happy scenario  (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:28:15)</failure>
 
     
-
-    
-    </testcase>
-  
-    <testcase name="My second test case-submit file" classname="SubmitForm_Test" time="16.04" assertions="2">
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="My third test case-No email" classname="SubmitForm_Test" time="11.04" assertions="2">
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="My fourth test case-No subject header is selected " classname="SubmitForm_Test" time="10.70" assertions="2">
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="fifth test case: message is missing(it&#39;s required field should be provided)" classname="SubmitForm_Test" time="10.74" assertions="2">
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="sixth test case:(reference order ,file attachement not required)-&gt;form will be submitted regarding their non-existance" classname="SubmitForm_Test" time="13.87" assertions="2">
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="My seventh test case to check wether there&#39;s format checking on email address entry,it should fail &amp; messag: invalid email entry " classname="SubmitForm_Test" time="16.92" assertions="2">
-
-    
-
+    <error message="Testing if element [33m&lt;Element [name=@successMessageSelector]&gt;[39m is visible in 5000ms - expected [32m&#34;is visible&#34;[39m but got: [31m&#34;element could not be located&#34;[39m [90m(5102ms)[39m" type="error"><![CDATA[
+    Error
+    at Command.executeCommand (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\page-object\command-wrapper.js:281:22)
+    at Object.visible (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\page-object\command-wrapper.js:86:27)
+    at Proxy.&lt;anonymous&gt; (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\api\index.js:161:30)
+    at My first test case all enteries are given happy scenario  (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:28:15)
+    at Context.call (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\testsuite\context.js:515:35)
+    at TestCase.run (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\testsuite\testcase.js:58:31)
+    at Runnable.__runFn (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\testsuite\index.js:839:80)
+    at Runnable.run (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\testsuite\runnable.js:126:21)
+    at TestSuite.executeRunnable (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\testsuite\index.js:1000:49)
+    at TestSuite.handleRunnable (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\node_modules\nightwatch\lib\testsuite\index.js:1015:33)
+    ]]></error>
     
     </testcase>
   
 
   
+    <system-err>
+       NoSuchElementError
+   An element could not be located on the page using the given search parameters.
+
+    Try fixing by :
+    1. Please inspect the html before the step
+    2. Verify if an element with the mentioned selector is present in the DOM tree
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:18
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     16 |       .navigate()
+     17 |       .waitForElementVisible(&#34;body&#34;)
+     18 |       .selectFilter(&#34;@subjectHeadingDropDownSelector&#34;, CustomerService) 
+     19 |       .pause(3000)
+     20 |       .Set_Value(&#34;@emailSelector&#34;, &#34;test@gmail.com&#34;)
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ NoSuchElementError
+   An element could not be located on the page using the given search parameters.
+
+    Try fixing by :
+    1. Please inspect the html before the step
+    2. Verify if an element with the mentioned selector is present in the DOM tree
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:18
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     16 |       .navigate()
+     17 |       .waitForElementVisible(&#34;body&#34;)
+     18 |       .selectFilter(&#34;@subjectHeadingDropDownSelector&#34;, CustomerService) 
+     19 |       .pause(3000)
+     20 |       .Set_Value(&#34;@emailSelector&#34;, &#34;test@gmail.com&#34;)
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ NoSuchElementError
+   An element could not be located on the page using the given search parameters.
+
+    Try fixing by :
+    1. Please inspect the html before the step
+    2. Verify if an element with the mentioned selector is present in the DOM tree
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:20
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     18 |       .selectFilter(&#34;@subjectHeadingDropDownSelector&#34;, CustomerService)
+     19 |       .pause(3000)
+     20 |       .Set_Value(&#34;@emailSelector&#34;, &#34;test@gmail.com&#34;) 
+     21 |       .pause(3000)
+     22 |       .Set_Value(&#34;@messageSelector&#34;, &#34;Test Case_1&#34;)
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ NoSuchElementError
+   An element could not be located on the page using the given search parameters.
+
+    Try fixing by :
+    1. Please inspect the html before the step
+    2. Verify if an element with the mentioned selector is present in the DOM tree
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:20
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     18 |       .selectFilter(&#34;@subjectHeadingDropDownSelector&#34;, CustomerService)
+     19 |       .pause(3000)
+     20 |       .Set_Value(&#34;@emailSelector&#34;, &#34;test@gmail.com&#34;) 
+     21 |       .pause(3000)
+     22 |       .Set_Value(&#34;@messageSelector&#34;, &#34;Test Case_1&#34;)
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ NoSuchElementError
+   An element could not be located on the page using the given search parameters.
+
+    Try fixing by :
+    1. Please inspect the html before the step
+    2. Verify if an element with the mentioned selector is present in the DOM tree
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:22
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     20 |       .Set_Value(&#34;@emailSelector&#34;, &#34;test@gmail.com&#34;)
+     21 |       .pause(3000)
+     22 |       .Set_Value(&#34;@messageSelector&#34;, &#34;Test Case_1&#34;) 
+     23 |       .pause(3000)
+     24 |       .Set_Value(&#34;@OrderReferenceInput&#34;,Order_num)
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ NoSuchElementError
+   An element could not be located on the page using the given search parameters.
+
+    Try fixing by :
+    1. Please inspect the html before the step
+    2. Verify if an element with the mentioned selector is present in the DOM tree
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:22
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     20 |       .Set_Value(&#34;@emailSelector&#34;, &#34;test@gmail.com&#34;)
+     21 |       .pause(3000)
+     22 |       .Set_Value(&#34;@messageSelector&#34;, &#34;Test Case_1&#34;) 
+     23 |       .pause(3000)
+     24 |       .Set_Value(&#34;@OrderReferenceInput&#34;,Order_num)
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ NoSuchElementError
+   An element could not be located on the page using the given search parameters.
+
+    Try fixing by :
+    1. Please inspect the html before the step
+    2. Verify if an element with the mentioned selector is present in the DOM tree
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:24
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     22 |       .Set_Value(&#34;@messageSelector&#34;, &#34;Test Case_1&#34;)
+     23 |       .pause(3000)
+     24 |       .Set_Value(&#34;@OrderReferenceInput&#34;,Order_num) 
+     25 |       .pause(3000)
+     26 |       .click(&#34;@submitButtonSelector&#34;)
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ NoSuchElementError
+   An element could not be located on the page using the given search parameters.
+
+    Try fixing by :
+    1. Please inspect the html before the step
+    2. Verify if an element with the mentioned selector is present in the DOM tree
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:24
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     22 |       .Set_Value(&#34;@messageSelector&#34;, &#34;Test Case_1&#34;)
+     23 |       .pause(3000)
+     24 |       .Set_Value(&#34;@OrderReferenceInput&#34;,Order_num) 
+     25 |       .pause(3000)
+     26 |       .click(&#34;@submitButtonSelector&#34;)
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ NoSuchElementError
+   An element could not be located on the page using the given search parameters.
+
+    Try fixing by :
+    1. Please inspect the html before the step
+    2. Verify if an element with the mentioned selector is present in the DOM tree
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:26
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     24 |       .Set_Value(&#34;@OrderReferenceInput&#34;,Order_num)
+     25 |       .pause(3000)
+     26 |       .click(&#34;@submitButtonSelector&#34;) 
+     27 |       .pause(3000)
+     28 |       .assert.visible(&#34;@successMessageSelector&#34;);
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+    </system-err>
+  
 
     
 
+  
+    
+    <testcase
+      name="My second test case-submit file" classname="SubmitForm_Test">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="My third test case-No email" classname="SubmitForm_Test">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="My fourth test case-No subject header is selected " classname="SubmitForm_Test">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="fifth test case: message is missing(it&#39;s required field should be provided)" classname="SubmitForm_Test">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="sixth test case:(reference order ,file attachement not required)-&gt;form will be submitted regarding their non-existance" classname="SubmitForm_Test">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="My seventh test case to check wether there&#39;s format checking on email address entry,it should fail &amp; messag: invalid email entry " classname="SubmitForm_Test">
+      <skipped />
+    </testcase>
+    
   
   </testsuite>
 </testsuites>
