@@ -5,7 +5,7 @@ jobs:
       - image: circleci/node:latest
     working_directory: C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\API_TEST
     steps:
-      - checkout
+      - checkout:
       - run:
           name: Start API Server
           command: npm run dev 8080
@@ -16,12 +16,13 @@ jobs:
   run_ui_tests:
     docker:
       - image: circleci/node:latest
-    working_directory: C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing
+    working_directory: ~/SDET-Technical-Task-2024/UI_Testing
     steps:
-      - checkout
+      - checkout:
+          path: ~/SDET-Technical-Task-2024
       - run:
-          name: Run UI Tests
-          command: npx nightwatch 
+          name: Install dependencies
+          command: npm install 
 workflows:
   version: 2
   build_and_deploy:
