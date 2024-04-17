@@ -12,15 +12,6 @@ jobs:
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
-      - run:
-          command: |
-            google-chrome --version
-            chromedriver --version
-          name: Check install
-          
-          
       # Download GeckoDriver
       - run:
           name: Download GeckoDriver
