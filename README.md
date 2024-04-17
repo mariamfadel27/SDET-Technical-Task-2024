@@ -6,7 +6,7 @@ this project tests a website by end to end testing approach by using NightwatchJ
 This project consists of automated tests for two parts:
 
 1-Testing the My Store website using NightwatchJS.
-2-Testing the API routes 
+2-Testing the API routes.
 provided by the mock-user-auth module using Supertest and mocha.
 # Features
 - Automated testing of the My Store website contact us page, including:
