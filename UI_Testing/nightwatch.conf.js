@@ -75,11 +75,11 @@ module.exports = {
       },
       webdriver: {
         start_process: true,
-        server_path: '',
+        server_path: require('geckodriver').path, // Set GeckoDriver path dynamically
+        port: 4444,
         cli_args: [
-          // very verbose geckodriver logs
-          // '-vv'
-        ]
+            // Arguments passed to the WebDriver executable
+        ],
       }
     },
 
