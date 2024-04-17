@@ -18,9 +18,13 @@ jobs:
           name: Change mock-user-auth permissions
           command: chmod +x ./node_modules/mock-user-auth/bin/www.js
       - run:
+          command: npm i --save mock-user-auth
+      - run:
           name: Start backend server
-          command: npm run dev 8080 & sleep 10 & npm test
-          
+          command: npm run dev 8080  
+      - run:
+          name: Start backend server
+          command: npm test
 workflows:
   build:
     jobs:
