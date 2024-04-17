@@ -8,7 +8,8 @@
     "test-Create_user": "mocha test/Create_user.js",
     "test-delete_by_token_all_users": "mocha test/delete_by_token_all_users.js",
     "test-GET_PATCH_USER_BY_TOKEN": "mocha test/GET_PATCH_USER_BY_TOKEN.js",
-    "test-authenticate_user": "mocha test/authenticate_user.js"
+    "test-authenticate_user": "mocha test/authenticate_user.js",
+    "dev": "nodemon ./node_modules/mock-user-auth/bin/www.js"
   },
   "keywords": [],
   "author": "",
@@ -24,5 +25,8 @@
     "faker": "^5.5.3",
     "mocha": "^10.4.0",
     "supertest": "^6.3.4"
+  },
+  "dependencies": {
+    "mock-user-auth": "^1.0.15"
   }
 }
