@@ -1,30 +1,22 @@
+# This config was automatically generated from your source code
+# Stacks detected: deps:node:.
 version: 2.1
+orbs:
+  node: circleci/node@5
 jobs:
-  run_api_tests:
-    docker:
-      - image: circleci/node:latest
-    working_directory: C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\API_TEST
-    steps:
-      - checkout:
-      - run:
-          name: Start API Server
-          command: npm run dev 8080
-          background: true
-      - run:
-          name: Run API Tests
-          command: npm test
-  run_ui_tests:
-    docker:
-      - image: circleci/node:latest
+  UItests:
+    # Build node project
+    executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/UI_Testing
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
+      - node/install-packages:
+          pkg-manager: npm
       - run:
           name: Install dependencies
           command: npm install 
 workflows:
-  version: 2
-  build_and_deploy:
+  build:
     jobs:
-      - run_ui_tests
+      - UItests
