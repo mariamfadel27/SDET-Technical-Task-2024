@@ -2,7 +2,7 @@
 # Stacks detected: deps:node:.
 version: 2.1
 orbs:
-  node: circleci/node@5jobs:
+  node: circleci/node@5
 jobs:
   UItests:
     executor: node/default
