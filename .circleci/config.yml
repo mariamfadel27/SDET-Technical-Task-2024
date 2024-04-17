@@ -21,4 +21,9 @@ jobs:
       - checkout
       - run:
           name: Run UI Tests
-          command: npx nightwatch -e edge
+          command: npx nightwatch 
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      -run_ui_tests
