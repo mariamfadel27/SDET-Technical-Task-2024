@@ -7,7 +7,7 @@ jobs:
   UItests:
     # Build node project
     executor: node/default
-    working_directory: ~/SDET-Technical-Task-2024/UI_Testing
+    working_directory: ~/SDET-Technical-Task-2024/API_TEST
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
@@ -15,7 +15,7 @@ jobs:
           pkg-manager: npm
       - run:
           name: Install dependencies
-          command: npx nightwatch 
+          command: npm test
 workflows:
   build:
     jobs:
