@@ -46,7 +46,7 @@ if (!dressIncluded) {
               // Check if all products have been verified
               if (productsVerified === productCount) {
                 // End the browser session once all products are verified
-                
+                browser.end();
               }
             });
           }
