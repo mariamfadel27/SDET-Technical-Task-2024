@@ -16,15 +16,15 @@ module.exports = {
       .navigate()
       .waitForElementVisible("body")
       .selectFilter("@subjectHeadingDropDownSelector", CustomerService)
-      .pause(3000)
+      .pause(2000)
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(3000)
+      .pause(2000)
       .Set_Value("@messageSelector", "Test Case_1")
-      .pause(3000)
+      .pause(2000)
       .Set_Value("@OrderReferenceInput",Order_num)
-      .pause(3000)
+      .pause(2000)
       .click("@submitButtonSelector")
-      .pause(3000)
+      .pause(2000)
       .assert.visible("@successMessageSelector");
   },
 /** 
@@ -37,15 +37,16 @@ module.exports = {
       .selectFilter("@subjectHeadingDropDownSelector", WebMaster)
       .pause(2000)
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(3000)
+      .pause(2000)
       .Submit_File() /*submit file*/ 
+      .pause(2000)
       // Wait for the filename to be visible in the specified element
       .Set_Value("@messageSelector", "Test Case_2: file submitted successfully")
-      .pause(3000)
+      .pause(2000)
       .Set_Value("@OrderReferenceInput",Order_num)
-      .pause(3000)
+      .pause(2000)
       .click("@submitButtonSelector")
-      .pause(3000)
+      .pause(2000)
       .assert.visible("@successMessageSelector");
     
   },
@@ -57,11 +58,11 @@ module.exports = {
       page.click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
         .waitForElementVisible("body")
         .selectFilter("@subjectHeadingDropDownSelector", WebMaster)
-        .pause(3000)
+        .pause(2000)
         .Set_Value("@messageSelector", "Test Case_3: failed to send this message,email is missed")
-        .pause(3000)
+        .pause(2000)
         .click("@submitButtonSelector")
-        .pause(3000)
+        .pause(2000)
         .assert.visible("@invalidEmailAddress");
     },
 
@@ -74,11 +75,11 @@ module.exports = {
       .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .waitForElementVisible("body")
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(3000)
+      .pause(2000)
       .Set_Value("@messageSelector", "Test Case_4: failed to send this message,please select subject")
-      .pause(3000)
+      .pause(2000)
       .click("@submitButtonSelector")
-      .pause(3000)
+      .pause(2000)
       .assert.visible("@invalidsubject");
   },
 
@@ -90,12 +91,12 @@ module.exports = {
     page
       .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .selectFilter("@subjectHeadingDropDownSelector", WebMaster)
-      .pause(3000)
+      .pause(2000)
       .waitForElementVisible("body")
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(3000)
+      .pause(2000)
       .click("@submitButtonSelector")
-      .pause(3000)
+      .pause(2000)
       .assert.visible("@invalidmessage");
   },
 
@@ -108,14 +109,14 @@ module.exports = {
     page
       .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .selectFilter("@subjectHeadingDropDownSelector", CustomerService)
-      .pause(3000)
+      .pause(2000)
       .waitForElementVisible("body")
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(3000)
+      .pause(2000)
       .Set_Value("@messageSelector", "Test Case_6:(reference order ,file attachement not required fields")
-      .pause(3000)
+      .pause(2000)
       .click("@submitButtonSelector")
-      .pause(3000)
+      .pause(2000)
       .assert.visible("@successMessageSelector");
   },
       "My seventh test case to check wether there's format checking on email address entry,it should fail & messag: invalid email entry "(browser) {
@@ -124,15 +125,15 @@ module.exports = {
           .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
           .waitForElementVisible("body")
           .selectFilter("@subjectHeadingDropDownSelector", CustomerService)
-          .pause(3000)
+          .pause(2000)
           .Set_Value("@emailSelector", "test")//wrong email format
-          .pause(3000)
+          .pause(2000)
           .Set_Value("@messageSelector", "Test Case_7: wrong email format")
-          .pause(3000)
+          .pause(2000)
           .Set_Value("@OrderReferenceInput",Order_num)
-          .pause(3000)
+          .pause(2000)
           .click("@submitButtonSelector")
-          .pause(3000)
+          .pause(2000)
           .assert.visible("@invalidEmailAddress");
       }
 
