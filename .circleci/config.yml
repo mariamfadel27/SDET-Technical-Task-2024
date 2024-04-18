@@ -2,7 +2,8 @@
 # Stacks detected: deps:node:.
 version: 2.1
 orbs:
-  node: circleci/node@5
+  node: circleci/node@4.7
+browser-tools: circleci/browser-tools@1.1.0
 jobs:
   UItests:
     executor: node/default
@@ -12,15 +13,6 @@ jobs:
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
-      - run:
-          name: Install Firefox and GeckoDriver
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y firefox
-            mkdir -p ~/geckodriver
-            curl -L https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz -o ~/geckodriver/geckodriver.tar.gz
-            tar -xzvf ~/geckodriver/geckodriver.tar.gz -C ~/geckodriver/
-            echo 'export PATH=$PATH:$HOME/geckodriver' >> $BASH_ENV && source $BASH_ENV
       - node/install-packages:
           pkg-manager: npm
       - run:
@@ -31,7 +23,7 @@ jobs:
           command: chmod +x node_modules/.bin/nightwatch
       - run:
           name: Run Nightwatch tests with Firefox
-          command: npx nightwatch --env firefox --config config/nightwatch.firefox.conf.js
+          command: npx nightwatch 
 
   APItests:
     # Build node project
@@ -40,6 +32,8 @@ jobs:
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
+      - browser-tools/install-browser-tools
+      - node/install-packages
       - node/install-packages:
           pkg-manager: npm
       
@@ -59,7 +53,7 @@ jobs:
 workflows:
   build:
     jobs:
-      - APItests
+      - UItests
 
 
 
