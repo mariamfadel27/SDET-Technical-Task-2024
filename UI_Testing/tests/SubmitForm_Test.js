@@ -12,8 +12,7 @@ module.exports = {
 
   "My first test case all enteries are given happy scenario "(browser) {
     
-    page
-      .navigate()
+    page.click("@ContuctUs_Selector")
       .waitForElementVisible("body")
       .selectFilter("@subjectHeadingDropDownSelector", CustomerService)
       .pause(3000)
