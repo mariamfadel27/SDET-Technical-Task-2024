@@ -1,8 +1,8 @@
 
+[![CircleCI](https://circleci.com/mariamfadel27/circleci/SDET-Technical-Task-2024.svg?style=svg)](https://circleci.com/mariamfadel27/circleci/SDET-Technical-Task-2024)
 # SDET 2024 - Technical Task
 this project tests a website by end to end testing approach by using NightwatchJS
 & the API routes using mocha with Supertest. 
-[![CircleCI](https://circleci.com/SDET-Technical-Task-2024/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/mariamfadel27/SDET-Technical-Task-2024/52/workflows/aa0383fb-ebe2-4f24-9900-4ce2baf70e33)
 # Description:
 This project consists of automated tests for two parts:
 
