@@ -21,14 +21,8 @@ jobs:
           command: npm install nightwatch
       - run:
           name: Install Firefox
-          command:
-      # Check if Firefox is already installed
-      if ! command -v firefox; then
-          # Install Firefox
-          sudo apt update
-          sudo apt install firefox -y
-      fi
-
+          command: sudo apt update
+          command: sudo apt install firefox -y
       - run:
           name: Change Nightwatch permissions
           command: chmod +x node_modules/.bin/nightwatch
