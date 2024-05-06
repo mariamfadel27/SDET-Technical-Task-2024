@@ -5,9 +5,9 @@
 
   <testsuite name="SearchDress"
     errors="0" failures="2" hostname="" id="" package="SearchDress" skipped="0"
-    tests="1" time="13.33" timestamp="">
+    tests="1" time="8.574" timestamp="">
   
-    <testcase name="Verify product names contain &#34;dress&#34;" classname="SearchDress" time="2.248" assertions="9">
+    <testcase name="Verify product names contain &#34;dress&#34;" classname="SearchDress" time="2.026" assertions="9">
 
     
 
@@ -29,6 +29,24 @@
     </testcase>
   
 
+  
+    <system-err>
+       TimeoutError
+   An error occurred while running .setValue() command on &lt;#fileUpload&gt;: invalid argument: File not found : C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\page-objects\submit_file\MariamWaleed_computer_engineer.pdf
+  (Session info: edge-headless-shell=124.0.2478.80)
+    {&#34;error&#34;:{&#34;name&#34;:&#34;InvalidArgumentError&#34;,&#34;remoteStacktrace&#34;:&#34;&#34;},&#34;status&#34;:-1,&#34;value&#34;:null}
+
+    Error location:
+    C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SubmitForm_Test.js:21
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+     19 |       .Set_Value(&#34;@emailSelector&#34;, &#34;test@gmail.com&#34;)
+     20 |       .pause(1000)
+     21 |       .Submit_File() /*submit file*/  
+     22 |       .Set_Value(&#34;@messageSelector&#34;, &#34;Test Case_1:happy case all elements are given&#34;)
+     23 |       .pause(1000)
+    –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+    </system-err>
   
 
     

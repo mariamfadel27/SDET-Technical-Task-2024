@@ -37,7 +37,7 @@ module.exports = {
      {
         Submit_File(){
             const page=this;
-            page.click('#uniform-fileUpload').setValue("#fileUpload", require('path').resolve(__dirname, 'M:\\file.pdf'))
+            page.click('#uniform-fileUpload').setValue("#fileUpload", require('path').resolve(__dirname, '../submit_file/MariamWaleed_computer_engineer.pdf'))
             return this;
         }
      } 
