@@ -16,6 +16,13 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
+    name: Install Firefox
+    command: 
+      if ! command -v firefox; then
+        sudo apt update
+        sudo apt install firefox -y
+      fi
+      - run:
           name: Install Nightwatch
           command: npm install nightwatch
       - run:
