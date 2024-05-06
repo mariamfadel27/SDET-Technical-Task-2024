@@ -15,16 +15,20 @@ jobs:
           path: ~/SDET-Technical-Task-2024
       - node/install-packages:
           pkg-manager: npm
-      - run:
-    name: Install Firefox
-    command: 
-      if ! command -v firefox; then
-        sudo apt update
-        sudo apt install firefox -y
-      fi
+      
       - run:
           name: Install Nightwatch
           command: npm install nightwatch
+      - run:
+          name: Install Firefox
+          command:
+      # Check if Firefox is already installed
+      if ! command -v firefox; then
+          # Install Firefox
+          sudo apt update
+          sudo apt install firefox -y
+      fi
+
       - run:
           name: Change Nightwatch permissions
           command: chmod +x node_modules/.bin/nightwatch
