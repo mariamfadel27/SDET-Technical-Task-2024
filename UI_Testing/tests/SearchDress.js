@@ -19,7 +19,7 @@ module.exports = {
           const productCount = result.value.length;
           console.log('Product counts:',productCount);
           // Loop over each product
-          for (let i = 1; i <= 5; i++) {
+          for (let i = 1; i <= productCount; i++) {
             // Construct the CSS selector for each product
             const selector = `#product_list > li:nth-child(${i}) > div > div.right-block > h5 > a`; /*here the tracing to reach the product name in h5>a each product has a class named li*/
             // Get the text of the product name
