@@ -20,7 +20,6 @@ jobs:
           name: Install Nightwatch
           command: npm install nightwatch
       - run:
-          name: Install Firefox
           command: sudo apt update
           command: sudo apt install firefox -y
       - run:
