@@ -23,10 +23,8 @@ jobs:
           command: chmod +x node_modules/.bin/nightwatch
       - run:
           name: Run Nightwatch tests/SearchDress with Firefox
-          command: npx nightwatch tests/SearchDress.js
-      - run:
-          name: Run Nightwatch tests/SubmitForm_Test.js
-          command: npx nightwatch tests/SubmitForm_Test.js
+          command: npx nightwatch 
+      
 
   APItests:
     # Build node project
