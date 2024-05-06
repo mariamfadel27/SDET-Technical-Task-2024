@@ -20,9 +20,6 @@ jobs:
           name: Install Nightwatch
           command: npm install nightwatch
       - run:
-          command: sudo apt update
-          command: sudo apt install firefox -y
-      - run:
           name: Change Nightwatch permissions
           command: chmod +x node_modules/.bin/nightwatch
       - run:
