@@ -22,7 +22,7 @@ jobs:
           name: Change Nightwatch permissions
           command: chmod +x node_modules/.bin/nightwatch
       - run:
-          name: Run Nightwatch tests/SearchDress with Firefox
+          name: Run Nightwatch tests
           command: npx nightwatch 
       
 
