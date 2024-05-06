@@ -58,10 +58,8 @@ module.exports = {
         start_process: true,
         server_path: ''
       }
+      
     },
-
-    
-
     firefox: {
       desiredCapabilities : {
         browserName : 'firefox',

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="7">
+
+  <testsuite name="SubmitForm_Test"
+    errors="0" failures="0" hostname="" id="" package="SubmitForm_Test" skipped="0"
+    tests="7" time="95.94" timestamp="">
+  
+    <testcase name="My first test case all enteries are given happy scenario " classname="SubmitForm_Test" time="13.47" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="My second test case-submit file is missing" classname="SubmitForm_Test" time="7.265" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="My third test case-No email" classname="SubmitForm_Test" time="4.507" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="My fourth test case-No subject header is selected " classname="SubmitForm_Test" time="4.833" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="fifth test case: message is missing(it&#39;s required field should be provided)" classname="SubmitForm_Test" time="4.559" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="sixth test case:(reference order ,file attachement not required)-&gt;form will be submitted regarding their non-existance" classname="SubmitForm_Test" time="6.038" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="My seventh test case to check wether there&#39;s format checking on email address entry,it should fail &amp; messag: invalid email entry " classname="SubmitForm_Test" time="7.285" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

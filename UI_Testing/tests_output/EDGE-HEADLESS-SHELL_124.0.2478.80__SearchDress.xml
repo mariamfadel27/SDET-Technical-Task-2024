@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="2"
+            tests="1">
+
+  <testsuite name="SearchDress"
+    errors="0" failures="2" hostname="" id="" package="SearchDress" skipped="0"
+    tests="1" time="13.33" timestamp="">
+  
+    <testcase name="Verify product names contain &#34;dress&#34;" classname="SearchDress" time="2.248" assertions="9">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Failed [ok]: (Product name contains &#34;dress&#34; for product 6) - expected &#34;true&#34; but got: &#34;false&#34; (0ms)">    at NightwatchAPI.&lt;anonymous&gt; (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SearchDress.js:35:30)</failure>
+
+      <failure message="Failed [ok]: (Product name contains &#34;dress&#34; for product 7) - expected &#34;true&#34; but got: &#34;false&#34; (0ms)">    at NightwatchAPI.&lt;anonymous&gt; (C:\Users\Maria\OneDrive - Faculty of Engineering Ain Shams University\Desktop\SDET_Task_Mariam_Waleed\UI_Testing\tests\SearchDress.js:35:30)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

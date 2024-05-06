@@ -1,7 +1,7 @@
 /*importing the page objects*/ 
 const page = browser.page.Submit_Form();
 const Order_num="12345678";
-const CustomerService="2";
+const CustomerService="2";/* drop down index*/
 const WebMaster="1";
 const Default= "0";
 const path = require('path');
@@ -11,44 +11,43 @@ const path = require('path');
 module.exports = {
 
   "My first test case all enteries are given happy scenario "(browser) {
-    
     page
       .navigate()
       .waitForElementVisible("body")
       .selectFilter("@subjectHeadingDropDownSelector", CustomerService)
-      .pause(2000)
+      .pause(1000)
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(2000)
-      .Set_Value("@messageSelector", "Test Case_1")
-      .pause(2000)
+      .pause(1000)
+      .Submit_File() /*submit file*/ 
+      .Set_Value("@messageSelector", "Test Case_1:happy case all elements are given")
+      .pause(1000)
       .Set_Value("@OrderReferenceInput",Order_num)
-      .pause(2000)
+      .pause(1000)
       .click("@submitButtonSelector")
-      .pause(2000)
-      .assert.visible("@successMessageSelector");
+      .pause(1000)
+      .assert.visible("@Success_message").assert.containsText("@Success_message","Your message has been successfully sent to our team.")
+      .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase1.png'));
   },
 /** 
- * my second test case:submit file
+ * my second test case:submit file is missing
 */
-  "My second test case-submit file"(browser) {
+  "My second test case-submit file is missing"(browser) {
 
     page.click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .waitForElementVisible("body")
       .selectFilter("@subjectHeadingDropDownSelector", WebMaster)
-      .pause(2000)
+      .pause(1000)
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(2000)
-      .Submit_File() /*submit file*/ 
-      .pause(2000)
+      .pause(1000)
       // Wait for the filename to be visible in the specified element
-      .Set_Value("@messageSelector", "Test Case_2: file submitted successfully")
-      .pause(2000)
+      .Set_Value("@messageSelector", "Test Case_2: attach file is missing(not a required field),message sent any way")
+      .pause(1000)
       .Set_Value("@OrderReferenceInput",Order_num)
-      .pause(2000)
+      .pause(1000)
       .click("@submitButtonSelector")
-      .pause(2000)
-      .assert.visible("@successMessageSelector");
-    
+      .pause(1000)
+      .assert.visible("@Success_message").assert.containsText("@Success_message","Your message has been successfully sent to our team.")
+      .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase2.png'));
   },
   /** 
  * my third test case: email is missing expected to message won't send
@@ -58,12 +57,14 @@ module.exports = {
       page.click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
         .waitForElementVisible("body")
         .selectFilter("@subjectHeadingDropDownSelector", WebMaster)
-        .pause(2000)
+        .pause(1000)
         .Set_Value("@messageSelector", "Test Case_3: failed to send this message,email is missed")
-        .pause(2000)
+        .pause(1000)
         .click("@submitButtonSelector")
-        .pause(2000)
-        .assert.visible("@invalidEmailAddress");
+        .pause(1000)
+        .assert.visible("@Error_message")
+        .assert.containsText('@POP_UP_MSG', 'Invalid email address.')
+        .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase3.png'));
     },
 
     /** 
@@ -75,12 +76,14 @@ module.exports = {
       .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .waitForElementVisible("body")
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(2000)
+      .pause(1000)
       .Set_Value("@messageSelector", "Test Case_4: failed to send this message,please select subject")
-      .pause(2000)
+      .pause(1000)
       .click("@submitButtonSelector")
-      .pause(2000)
-      .assert.visible("@invalidsubject");
+      .pause(1000)
+      .assert.visible("@Error_message")
+      .assert.containsText('@POP_UP_MSG', 'Please select a subject from the list provided.')
+      .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase4.png'));
   },
 
   /*
@@ -91,13 +94,15 @@ module.exports = {
     page
       .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .selectFilter("@subjectHeadingDropDownSelector", WebMaster)
-      .pause(2000)
+      .pause(1000)
       .waitForElementVisible("body")
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(2000)
+      .pause(1000)
       .click("@submitButtonSelector")
-      .pause(2000)
-      .assert.visible("@invalidmessage");
+      .pause(1000)
+      .assert.visible("@Error_message")
+      .assert.containsText('@POP_UP_MSG', 'The message cannot be blank.')
+      .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase5.png'));
   },
 
   /*
@@ -105,37 +110,44 @@ module.exports = {
   while(reference order ,file attachement not required)->without them form will be submitted
   */ 
   "sixth test case:(reference order ,file attachement not required)->form will be submitted regarding their non-existance"(browser) {
-    
     page
       .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .selectFilter("@subjectHeadingDropDownSelector", CustomerService)
-      .pause(2000)
+      .pause(1000)
       .waitForElementVisible("body")
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(2000)
+      .pause(1000)
+      
       .Set_Value("@messageSelector", "Test Case_6:(reference order ,file attachement not required fields")
-      .pause(2000)
+      .pause(1000)
       .click("@submitButtonSelector")
-      .pause(2000)
-      .assert.visible("@successMessageSelector");
+      .pause(1000)
+      .assert.visible("@Success_message").assert.containsText("@Success_message","Your message has been successfully sent to our team.")
+      .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase6.png'));
   },
+
       "My seventh test case to check wether there's format checking on email address entry,it should fail & messag: invalid email entry "(browser) {
-    
         page
           .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
           .waitForElementVisible("body")
           .selectFilter("@subjectHeadingDropDownSelector", CustomerService)
-          .pause(2000)
+          .pause(1000)
           .Set_Value("@emailSelector", "test")//wrong email format
-          .pause(2000)
+          .pause(1000)
           .Set_Value("@messageSelector", "Test Case_7: wrong email format")
-          .pause(2000)
+          .pause(1000)
           .Set_Value("@OrderReferenceInput",Order_num)
-          .pause(2000)
+          .pause(1000)
           .click("@submitButtonSelector")
-          .pause(2000)
-          .assert.visible("@invalidEmailAddress");
-      }
-
+          .pause(1000)
+          .assert.visible("@Error_message")
+          .assert.containsText('@POP_UP_MSG', 'Invalid email address.')
+          .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase7.png'));
+      },
+      // Close the browser session
+  after: function(browser) {
+    browser.end();
+  }
+    
   };
   

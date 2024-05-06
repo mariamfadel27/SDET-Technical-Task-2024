@@ -7,13 +7,16 @@ module.exports = {
       emailSelector: "#email",
       messageSelector: "#message",
       submitButtonSelector: "#submitMessage",
-      successMessageSelector: "p.alert.alert-success",
-      invalidEmailAddress:"div.alert.alert-danger",
-      invalidsubject:"div.alert.alert-danger",
-      invalidmessage:"div.alert.alert-danger",
+
+      Success_message: "p.alert.alert-success",
+      Error_message:"div.alert.alert-danger",
+      
+      POP_UP_MSG:"#center_column > div > ol > li",
+      
       OrderReferenceInput:"#id_order",
       CostumerService:"2",
-      Webmaster:"3"
+      Webmaster:"3",
+      default:"0"
     },
     commands: [
       {
