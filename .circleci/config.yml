@@ -32,9 +32,9 @@ jobs:
     # Build node project
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/API_TEST
-    build:
+    docker:
+      - image: circleci/node:latest
     steps:
-    
       - checkout:
           path: ~/SDET-Technical-Task-2024
      
@@ -51,7 +51,7 @@ jobs:
           command: npm run dev 8080  
           background: true
       - run:
-          name: Start test
+          name: Start backend server
           command: npm test
 
 workflows:
