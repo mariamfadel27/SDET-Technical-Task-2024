@@ -5,7 +5,7 @@ orbs:
   node: circleci/node@4.7
 browser-tools: circleci/browser-tools@1.1.0
 jobs:
-  UItests:
+  UI_TEST:
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/UI_Testing
     docker:
@@ -22,8 +22,11 @@ jobs:
           name: Change Nightwatch permissions
           command: chmod +x node_modules/.bin/nightwatch
       - run:
-          name: Run Nightwatch tests with Firefox
-          command: npx nightwatch 
+          name: Run Nightwatch tests/SearchDress with Firefox
+          command: npx nightwatch tests/SearchDress.js
+      - run:
+          name: Run Nightwatch tests/SubmitForm_Test.js
+          command: npx nightwatch tests/SubmitForm_Test.js
 
   APItests:
     # Build node project
@@ -54,3 +57,4 @@ workflows:
   build:
     jobs:
       - APItests
+     
