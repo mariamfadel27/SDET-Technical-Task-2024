@@ -1,9 +1,7 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:node:.
 version: 2.1
 orbs:
- node: circleci/node@4.7
- browser-tools: circleci/browser-tools@1.1.0
+  node: circleci/node@4.7
+  browser-tools: circleci/browser-tools@1.1.0
 jobs:
   UI_TEST:
     executor: node/default
@@ -29,17 +27,13 @@ jobs:
           command: npx nightwatch tests/SubmitForm_Test.js
 
   APItests:
-    # Build node project
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/API_TEST
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
-      - browser-tools/install-browser-tools
+      - browser-tools/install-browser-tools  # Ensure correct reference to the browser-tools Orb
       - node/install-packages
-      - node/install-packages:
-          pkg-manager: npm
-      
       - run:
           name: Change mock-user-auth permissions
           command: chmod +x ./node_modules/mock-user-auth/bin/www.js
@@ -47,14 +41,13 @@ jobs:
           command: npm i --save mock-user-auth
       - run:
           name: Start backend server
-          command: npm run dev 8080  
+          command: npm run dev 8080
           background: true
       - run:
-          name: Start backend server
+          name: Run tests
           command: npm test
 
 workflows:
   build:
     jobs:
       - APItests
-     
