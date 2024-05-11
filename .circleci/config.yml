@@ -29,8 +29,6 @@ jobs:
     # Build node project
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/API_TEST
-      docker:
-      - image: cimg/node:lts-browsers
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
