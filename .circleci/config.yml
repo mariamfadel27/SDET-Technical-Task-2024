@@ -53,6 +53,7 @@ jobs:
       - run:
           name: generate test_report
           command: npm install --save-dev mochawsome
+      - run:
           command: npm test-html
       - run:
           name: Start backend server
