@@ -9,7 +9,7 @@ jobs:
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/UI_Testing
     docker:
-      - image: cimg/node:lts-browsers
+      - image: circleci/node:latest
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
@@ -31,6 +31,8 @@ jobs:
     # Build node project
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/API_TEST
+    docker:
+      - image: cimg/node:lts-browsers
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
