@@ -31,12 +31,18 @@ jobs:
     # Build node project
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/API_TEST
+<<<<<<< HEAD
  
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
      
      
+=======
+    steps:
+      - checkout:
+          path: ~/SDET-Technical-Task-2024
+>>>>>>> 437cd65c312321ce51c7543980f9fd494955c841
       - node/install-packages:
           pkg-manager: npm
       
