@@ -2,8 +2,8 @@
 # Stacks detected: deps:node:.
 version: 2.1
 orbs:
- node: circleci/node@4.7
- browser-tools: circleci/browser-tools@1.1.0
+  node: circleci/node@4.7
+browser-tools: circleci/browser-tools@1.1.0
 jobs:
   UI_TEST:
     executor: node/default
@@ -31,18 +31,11 @@ jobs:
     # Build node project
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/API_TEST
-<<<<<<< HEAD
- 
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
-     
-     
-=======
-    steps:
-      - checkout:
-          path: ~/SDET-Technical-Task-2024
->>>>>>> 437cd65c312321ce51c7543980f9fd494955c841
+      - browser-tools/install-browser-tools
+      - node/install-packages
       - node/install-packages:
           pkg-manager: npm
       
@@ -62,4 +55,4 @@ jobs:
 workflows:
   build:
     jobs:
-      - APItests
+      - UI_TEST
