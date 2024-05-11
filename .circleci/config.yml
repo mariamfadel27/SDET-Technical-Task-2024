@@ -51,11 +51,12 @@ jobs:
           command: npm run dev 8080  
           background: true
       - run:
-          name: Start backend server
-          command: npm test
-      - run:
           name: generate test_report
           command: npm test-html
+      - run:
+          name: Start backend server
+          command: npm test
+      
 
 workflows:
   build:
