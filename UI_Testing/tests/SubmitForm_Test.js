@@ -15,16 +15,16 @@ module.exports = {
       .navigate()
       .waitForElementVisible("body")
       .selectFilter("@subjectHeadingDropDownSelector", CustomerService)
-      .pause(1000)
+      
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(1000)
+      
       .Submit_File() /*submit file*/ 
       .Set_Value("@messageSelector", "Test Case_1:happy case all elements are given")
-      .pause(1000)
+      
       .Set_Value("@OrderReferenceInput",Order_num)
-      .pause(1000)
+      
       .click("@submitButtonSelector")
-      .pause(1000)
+      
       .assert.visible("@Success_message").assert.containsText("@Success_message","Your message has been successfully sent to our team.")
       .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase1.png'));
   },
@@ -36,16 +36,16 @@ module.exports = {
     page.click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .waitForElementVisible("body")
       .selectFilter("@subjectHeadingDropDownSelector", WebMaster)
-      .pause(1000)
+      
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(1000)
+      
       // Wait for the filename to be visible in the specified element
       .Set_Value("@messageSelector", "Test Case_2: attach file is missing(not a required field),message sent any way")
-      .pause(1000)
+      
       .Set_Value("@OrderReferenceInput",Order_num)
-      .pause(1000)
+      
       .click("@submitButtonSelector")
-      .pause(1000)
+      
       .assert.visible("@Success_message").assert.containsText("@Success_message","Your message has been successfully sent to our team.")
       .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase2.png'));
   },
@@ -57,11 +57,11 @@ module.exports = {
       page.click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
         .waitForElementVisible("body")
         .selectFilter("@subjectHeadingDropDownSelector", WebMaster)
-        .pause(1000)
+        
         .Set_Value("@messageSelector", "Test Case_3: failed to send this message,email is missed")
-        .pause(1000)
+        
         .click("@submitButtonSelector")
-        .pause(1000)
+        
         .assert.visible("@Error_message")
         .assert.containsText('@POP_UP_MSG', 'Invalid email address.')
         .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase3.png'));
@@ -76,11 +76,11 @@ module.exports = {
       .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .waitForElementVisible("body")
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(1000)
+      
       .Set_Value("@messageSelector", "Test Case_4: failed to send this message,please select subject")
-      .pause(1000)
+      
       .click("@submitButtonSelector")
-      .pause(1000)
+      
       .assert.visible("@Error_message")
       .assert.containsText('@POP_UP_MSG', 'Please select a subject from the list provided.')
       .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase4.png'));
@@ -94,12 +94,12 @@ module.exports = {
     page
       .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .selectFilter("@subjectHeadingDropDownSelector", WebMaster)
-      .pause(1000)
+      
       .waitForElementVisible("body")
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(1000)
+      
       .click("@submitButtonSelector")
-      .pause(1000)
+      
       .assert.visible("@Error_message")
       .assert.containsText('@POP_UP_MSG', 'The message cannot be blank.')
       .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase5.png'));
@@ -113,15 +113,15 @@ module.exports = {
     page
       .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
       .selectFilter("@subjectHeadingDropDownSelector", CustomerService)
-      .pause(1000)
+      
       .waitForElementVisible("body")
       .Set_Value("@emailSelector", "test@gmail.com")
-      .pause(1000)
+      
       
       .Set_Value("@messageSelector", "Test Case_6:(reference order ,file attachement not required fields")
-      .pause(1000)
+      
       .click("@submitButtonSelector")
-      .pause(1000)
+      
       .assert.visible("@Success_message").assert.containsText("@Success_message","Your message has been successfully sent to our team.")
       .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase6.png'));
   },
@@ -131,15 +131,15 @@ module.exports = {
           .click("@ContuctUs_Selector")//again t o submit another form,only first one doesn't need this
           .waitForElementVisible("body")
           .selectFilter("@subjectHeadingDropDownSelector", CustomerService)
-          .pause(1000)
+          
           .Set_Value("@emailSelector", "test")//wrong email format
-          .pause(1000)
+          
           .Set_Value("@messageSelector", "Test Case_7: wrong email format")
-          .pause(1000)
+          
           .Set_Value("@OrderReferenceInput",Order_num)
-          .pause(1000)
+          
           .click("@submitButtonSelector")
-          .pause(1000)
+          
           .assert.visible("@Error_message")
           .assert.containsText('@POP_UP_MSG', 'Invalid email address.')
           .saveScreenshot(path.resolve('screenshots', 'screenshot', 'testcase7.png'));

@@ -2,10 +2,10 @@
 # Stacks detected: deps:node:.
 version: 2.1
 orbs:
-  node: circleci/node@4.7
-  browser-tools: circleci/browser-tools@1.1.0
+ node: circleci/node@4.7
+ browser-tools: circleci/browser-tools@1.1.0
 jobs:
-  UItests:
+  UI_TEST:
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/UI_Testing
     docker:
@@ -15,6 +15,7 @@ jobs:
           path: ~/SDET-Technical-Task-2024
       - node/install-packages:
           pkg-manager: npm
+      
       - run:
           name: Install Nightwatch
           command: npm install nightwatch
@@ -22,23 +23,20 @@ jobs:
           name: Change Nightwatch permissions
           command: chmod +x node_modules/.bin/nightwatch
       - run:
-          name: Run Nightwatch tests with Firefox
+          name: Run Nightwatch tests
           command: npx nightwatch 
+      
 
   APItests:
     # Build node project
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/API_TEST
-<<<<<<< HEAD
-=======
-    docker:
-      - image: cimg/node:lts-browsers
->>>>>>> 59ac5bdf72acbb89877fb716e1ce3cbc6d09e877
+ 
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
-      - browser-tools/install-browser-tools
-      - node/install-packages
+     
+     
       - node/install-packages:
           pkg-manager: npm
       
@@ -58,9 +56,4 @@ jobs:
 workflows:
   build:
     jobs:
-     - APItests
-     
-
-
-
-      
+      - APItests
