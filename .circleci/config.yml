@@ -32,7 +32,7 @@ jobs:
     # Build node project
     executor: node/default
     working_directory: ~/SDET-Technical-Task-2024/API_TEST
-      docker:
+    docker:
       - image: circleci/node:latest
     steps:
       - checkout:
