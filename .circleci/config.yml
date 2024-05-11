@@ -53,6 +53,9 @@ jobs:
       - run:
           name: Start backend server
           command: npm test
+      - run:
+          name: generate test_report
+          command: npm test-html
 
 workflows:
   build:
