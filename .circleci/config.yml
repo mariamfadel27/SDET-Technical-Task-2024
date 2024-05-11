@@ -55,4 +55,14 @@ jobs:
 workflows:
   build:
     jobs:
+<<<<<<< HEAD
       - UI_TEST
+=======
+      - UI_TEST
+      
+     
+
+
+
+      
+>>>>>>> 716d2165b4200a7f7f1410361b10f15f6c633f3c
