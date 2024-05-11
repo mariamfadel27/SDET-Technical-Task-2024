@@ -5,11 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test",
+    "report_create_user":"mocha --reporter mochawesome --reporter-options reportDir=reports,reportFilename=Create_user_report.html test/Create_user.js",
+    "report-delete_by_token":"mocha --reporter mochawesome --reporter-options reportDir=reports,reportFilename=delete_by_token_report.html test/delete_by_token.js",
+    "report-delete_all_user":"mocha --reporter mochawesome --reporter-options reportDir=reports,reportFilename=delete_all_users_report.html test/delete_all_users.js",
+    "report-GET_PATCH_USER_BY_TOKEN":"mocha --reporter mochawesome --reporter-options reportDir=reports,reportFilename=GET_PATCH_USER_BY_TOKEN_report.html test/GET_PATCH_USER_BY_TOKEN.js",
+    "report-authenticate_user":"mocha --reporter mochawesome --reporter-options reportDir=reports,reportFilename=authenticate_user_report.html test/authenticate_user.js",
+    
+
     "test-html": "mocha --reporter mochawesome",
     "test-Create_user": "mocha test/Create_user.js",
-    "test-delete_by_token_all_users": "mocha test/delete_by_token_all_users.js",
+    "test-delete_by_token": "mocha test/delete_by_token.js",
+    "test-delete_all_user": "mocha test/delete_all_users.js",
     "test-GET_PATCH_USER_BY_TOKEN": "mocha test/GET_PATCH_USER_BY_TOKEN.js",
     "test-authenticate_user": "mocha test/authenticate_user.js",
+
     "dev": "nodemon ./node_modules/mock-user-auth/bin/www.js"
   },
   "keywords": [],

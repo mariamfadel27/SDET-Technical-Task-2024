@@ -20,6 +20,25 @@ async function deleteAllUsers() {
   }
 }
 /*
+Function to create a new user
+*/
+async function createUser() {
+  const newUser = {
+    name: faker.name.firstName(),
+    email: faker.internet.email(),
+    password: faker.internet.password()
+  };
+
+  try {
+    const response = await request.post('/api/v1/users').send(newUser);
+    console.log('User created with email:', newUser.email, 'and password:', newUser.password);
+    return newUser;
+  } catch (error) {
+    console.error('Error creating user:', error);
+    throw error;
+  }
+}
+/*
 first describe block (negative testing)
 response:should be
 status:401
@@ -58,35 +77,10 @@ describe('User Authentication API for a registered user', () => {
     let userPassword;
     let authToken;
   
-    it('should create a new user and store email and password', (done) => {
-      const newUser = {
-        name: faker.name.firstName(),
-        email: faker.internet.email(),
-        password: faker.internet.password()
-      };
-  
-      request.post('/api/v1/users')
-        .send(newUser)
-        .expect(200)
-        .end((err, res) => {
-          if (err) return done(err);
-  
-          const responseBody = res.body;
-  
-          if (responseBody.message !== 'User registered with success') {
-            return done(new Error('Unexpected message in response'));
-          }
-  
-          // Store email and password for further use
-          userEmail = newUser.email;
-          userPassword = newUser.password;
-  
-          console.log('User created with email:', userEmail, 'and password:', userPassword);
-  
-          
-  
-          done();
-        });
+    before(async () => {
+      const newUser = await createUser();
+      userEmail = newUser.email;
+      userPassword = newUser.password;
     });
   
     it('should authenticate the user and store the token', (done) => {
@@ -122,7 +116,7 @@ describe('User Authentication API for a registered user', () => {
   });
 
   /*************************************************************************************************
- *            another describe block to delete all users (for independency of tests)
+ *            delete all user(for independency of tests)
  ************************************************************************************************/
 
   

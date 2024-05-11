@@ -1,0 +1,149 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2024-05-07T00:36:45.290Z",
+    "end": "2024-05-07T00:36:45.415Z",
+    "duration": 125,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3b4a636c-56d5-49f0-ad20-407fc62b8124",
+      "title": "",
+      "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\Create_user.js",
+      "file": "\\test\\Create_user.js",
+      "beforeHooks": [],
+      "afterHooks": [
+        {
+          "title": "\"after all\" hook in \"{root}\"",
+          "fullTitle": "\"after all\" hook in \"{root}\"",
+          "timedOut": false,
+          "duration": 8,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); });",
+          "err": {},
+          "uuid": "21fcaec5-603b-478d-b12e-fd9b325102e7",
+          "parentUUID": "3b4a636c-56d5-49f0-ad20-407fc62b8124",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e7218ca1-0634-4156-870b-3114a5211734",
+          "title": "Create_user->POST /api/v1/users",
+          "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\Create_user.js",
+          "file": "\\test\\Create_user.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "testcase-1(valid body,check for message & token)",
+              "fullTitle": "Create_user->POST /api/v1/users testcase-1(valid body,check for message & token)",
+              "timedOut": false,
+              "duration": 79,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "/*\nconstruct random user\n*/\nvar user = {\n  name: faker.name.firstName(),\n  email: faker.internet.email(),\n  password: faker.internet.password()\n};\nconsole.log(user);\nrequest.post(\"/api/v1/users\").send(user).expect(200).end(function (err, res) {\n  var responseBody = res.body;\n  console.log('Response message:', responseBody.message); // Display the response message\n  if (responseBody.message !== 'User registered with success') {\n    return done(new Error('Unexpected message in response'));\n  }\n  if (!responseBody.token) {\n    return done(new Error('User registered with success,but Token missing in response')); /* this error finds a bug where token not found */\n  }\n  done();\n});",
+              "err": {
+                "message": "Error: User registered with success,but Token missing in response",
+                "estack": "Error: User registered with success,but Token missing in response\n    at Test.<anonymous> (test\\/Create_user.js:46:23)\n    at Test.assert (node_modules\\supertest\\lib\\test.js:172:8)\n    at localAssert (node_modules\\supertest\\lib\\test.js:120:14)\n    at fn (node_modules\\supertest\\lib\\test.js:125:7)\n    at Test.callback (node_modules\\superagent\\src\\node\\index.js:913:12)\n    at fn (node_modules\\superagent\\src\\node\\index.js:1166:18)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\src\\node\\parsers\\json.js:19:7)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                "diff": null
+              },
+              "uuid": "038abe9a-bd6d-423d-8bdc-e6d3a5d67e06",
+              "parentUUID": "e7218ca1-0634-4156-870b-3114a5211734",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "create user with empty request body",
+              "fullTitle": "Create_user->POST /api/v1/users create user with empty request body",
+              "timedOut": false,
+              "duration": 11,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "request.post('/api/v1/users').send({}).expect(400).end(function (err, res) {\n  if (err) return done(err);\n  return done(new Error('Error should fail creating an empty user,but it success got 200'));\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
+              "err": {
+                "message": "Error: expected 400 \"Bad Request\", got 200 \"OK\"",
+                "estack": "Error: expected 400 \"Bad Request\", got 200 \"OK\"\n    at Context.<anonymous> (test\\/Create_user.js:58:8)\n    at processImmediate (node:internal/timers:478:21)\n----\n    at Test._assertStatus (node_modules\\supertest\\lib\\test.js:252:14)\n    at C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\node_modules\\supertest\\lib\\test.js:308:13\n    at Test._assertFunction (node_modules\\supertest\\lib\\test.js:285:13)\n    at Test.assert (node_modules\\supertest\\lib\\test.js:164:23)\n    at localAssert (node_modules\\supertest\\lib\\test.js:120:14)\n    at fn (node_modules\\supertest\\lib\\test.js:125:7)\n    at Test.callback (node_modules\\superagent\\src\\node\\index.js:913:12)\n    at fn (node_modules\\superagent\\src\\node\\index.js:1166:18)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\src\\node\\parsers\\json.js:19:7)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                "diff": null
+              },
+              "uuid": "9ecd750f-d7c2-4539-8270-1f07ea4fa873",
+              "parentUUID": "e7218ca1-0634-4156-870b-3114a5211734",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "038abe9a-bd6d-423d-8bdc-e6d3a5d67e06",
+            "9ecd750f-d7c2-4539-8270-1f07ea4fa873"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 90,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "Create_user_report.html",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports",
+        "reportFilename": "Create_user_report.html"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

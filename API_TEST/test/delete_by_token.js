@@ -14,8 +14,9 @@ let userEmail;
 let userPassword;
 let authToken;
 /*
-fiest describe bock:to create users
-*/ 
+beforeEach:a before each hook,to make sure we created user & authenticate it for delete by token
+
+*/  
 
 beforeEach((done) => {
     // Create user
@@ -24,7 +25,7 @@ beforeEach((done) => {
       email: faker.internet.email(),
       password: faker.internet.password()
     };
-  
+  //register a new user first then authenticate it to continue
     request.post('/api/v1/users')
       .send(newUser)
       .expect(200)
@@ -42,7 +43,7 @@ beforeEach((done) => {
           .expect(200)
           .end((err, res) => {
             if (err) return done(err);
-            authToken = res.body.token;
+            authToken = res.body.token; //to authenticate user to get token used to delete user by token
             done();
           });
       });
@@ -76,13 +77,10 @@ request.delete('/api/v1/users')
     done();
   });
 });
-/*
-recreate-user to delete
-*/ 
+
 
 it('should return "Unauthorized to delete" message for invalid authorization', (done) => {
 const invalidToken = 'invalid_token';
-
 request.delete('/api/v1/users')
   .set('Authorization', invalidToken)
   .expect(403)
@@ -92,14 +90,11 @@ request.delete('/api/v1/users')
       console.error('Response body:', res.body);
       return done(err);
     }
-
     const responseBody = res.body;
-
     if (responseBody.message !== 'Unauthorized to delete') {
       console.error('Unexpected message in response:', responseBody);
       return done(new Error('Unexpected message in response'));
     }
-
     console.log('Response message:', responseBody.message); // Display the response message
     done();
   });
@@ -107,51 +102,4 @@ request.delete('/api/v1/users')
 });
 
 
-    /******************************************************************************************************************
-     *              describe block to delete all Users->(valid/invalid)
-     *****************************************************************************************************************/
-    describe('Delete All Users API', () => {
-        it('should delete all users with correct key_admin and return success message', (done) => {
-          const requestBody = {
-            key_admin: 'keyadmin123'
-          };
-      
-          request.delete('/api/v1/all-users')
-            .send(requestBody)
-            .expect(200)
-            .end((err, res) => {
-              if (err) return done(err);
-      
-              const responseBody = res.body;
-      
-              if (responseBody.message !== 'Users deleted with success') {
-                return done(new Error('Unexpected message in response'));
-              }
-      
-              console.log('Response message:', responseBody.message); // Display the response message
-              done();
-            });
-        });
-      
-        it('should return "Unauthorized access" message for wrong key_admin', (done) => {
-          const requestBody = {
-            key_admin: 'wrong_key'
-          };
-      
-          request.delete('/api/v1/all-users')
-            .send(requestBody)
-            .expect(403)
-            .end((err, res) => {
-              if (err) return done(err);
-      
-              const responseBody = res.body;
-      
-              if (responseBody.message !== 'Unauthorized access') {
-                return done(new Error('Unexpected message in response'));
-              }
-      
-              console.log('Response message:', responseBody.message); // Display the response message
-              done();
-            });
-        });
-      });
+    

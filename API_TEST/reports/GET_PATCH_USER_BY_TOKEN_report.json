@@ -1,0 +1,242 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 5,
+    "passes": 4,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-05-07T01:00:08.845Z",
+    "end": "2024-05-07T01:00:09.009Z",
+    "duration": 164,
+    "testsRegistered": 5,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "18849ddc-072c-412a-bf46-898e41e2dc97",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [
+        {
+          "title": "\"before each\" hook in \"{root}\"",
+          "fullTitle": "\"before each\" hook in \"{root}\"",
+          "timedOut": false,
+          "duration": 8,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "// Create user\nvar newUser = {\n  name: faker.name.firstName(),\n  email: faker.internet.email(),\n  password: faker.internet.password()\n};\n//register a new user first then authenticate it to continue\nrequest.post('/api/v1/users').send(newUser).expect(200).end(function (err, res) {\n  if (err) return done(err);\n  // Authenticate user\n  var credentials = {\n    email: newUser.email,\n    password: newUser.password\n  };\n  request.post('/api/v1/auth').send(credentials).expect(200).end(function (err, res) {\n    if (err) return done(err);\n    authToken = res.body.token; //to authenticate user to get token used to delete user by token\n    done();\n  });\n});",
+          "err": {},
+          "uuid": "c181b44e-bc6e-4b53-bd27-f253d4f10202",
+          "parentUUID": "18849ddc-072c-412a-bf46-898e41e2dc97",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "afterHooks": [
+        {
+          "title": "\"after all\" hook in \"{root}\"",
+          "fullTitle": "\"after all\" hook in \"{root}\"",
+          "timedOut": false,
+          "duration": 5,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); });",
+          "err": {},
+          "uuid": "bc13c3cf-1c68-41e7-91b6-2d1fcf5e6b3f",
+          "parentUUID": "18849ddc-072c-412a-bf46-898e41e2dc97",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b79ec71f-fa29-4ac5-bcde-4c1c3d766e5d",
+          "title": "GET_BY_TOKEN(valid/invalid)Authorization",
+          "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\GET_PATCH_USER_BY_TOKEN.js",
+          "file": "\\test\\GET_PATCH_USER_BY_TOKEN.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return user details with all fields & give error if one of the fields is missing with log message (valid authorization)",
+              "fullTitle": "GET_BY_TOKEN(valid/invalid)Authorization should return user details with all fields & give error if one of the fields is missing with log message (valid authorization)",
+              "timedOut": false,
+              "duration": 7,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "request.get('/api/v1/users').set('Authorization', authToken).expect(200).end(function (err, res) {\n  if (err) return done(err);\n  var responseBody = res.body;\n  // Check each field of the response\n  if (!responseBody.id) {\n    return done(new Error('ID is missing in response'));\n  }\n  if (!responseBody.name) {\n    return done(new Error('Name is missing in response'));\n  }\n  if (!responseBody.email) {\n    return done(new Error('Email is missing in response'));\n  }\n  if (!responseBody.password) {\n    return done(new Error('Password is missing in response'));\n  }\n  if (!responseBody.imageUrl) {\n    return done(new Error('Image URL is missing in response'));\n  }\n  console.log('User details:', responseBody); // Display the response body\n  done();\n});",
+              "err": {},
+              "uuid": "6f5d65fa-b12a-4f7d-8912-bc8b30491442",
+              "parentUUID": "b79ec71f-fa29-4ac5-bcde-4c1c3d766e5d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return \"Unauthorized\" with status 403 for invalid authorization token",
+              "fullTitle": "GET_BY_TOKEN(valid/invalid)Authorization should return \"Unauthorized\" with status 403 for invalid authorization token",
+              "timedOut": false,
+              "duration": 3,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var invalidToken = 'invalid_token';\nrequest.get('/api/v1/users').set('Authorization', invalidToken).expect(403).end(function (err, res) {\n  if (err) return done(err);\n  var responseBody = res.body;\n  if (responseBody.message !== 'Unauthorized') {\n    return done(new Error('Unexpected message in response'));\n  }\n  console.log('Response message:', responseBody.message); // Display the response message\n  console.log('Status:', res.status); // Display the response status\n  done();\n});",
+              "err": {},
+              "uuid": "47cf0294-d6fd-457d-adb5-995ea681ed90",
+              "parentUUID": "b79ec71f-fa29-4ac5-bcde-4c1c3d766e5d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6f5d65fa-b12a-4f7d-8912-bc8b30491442",
+            "47cf0294-d6fd-457d-adb5-995ea681ed90"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 10,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "3de27086-db27-4993-87c6-f25bd135a360",
+          "title": "Update User API,valid,invalid,valid_wrong_token",
+          "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\GET_PATCH_USER_BY_TOKEN.js",
+          "file": "\\test\\GET_PATCH_USER_BY_TOKEN.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should update user details and return success message for valid token and correct data",
+              "fullTitle": "Update User API,valid,invalid,valid_wrong_token should update user details and return success message for valid token and correct data",
+              "timedOut": false,
+              "duration": 8,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "request.patch('/api/v1/users').set('Authorization', authToken) //the only valid authorization\n.send(requestBody).expect(200).end(function (err, res) {\n  if (err) {\n    console.error('Error:', err);\n    console.error('Response body:', res.body);\n    return done(err);\n  }\n  var responseBody = res.body;\n  if (!responseBody.message) {\n    console.error('Response body does not contain message:', responseBody);\n    return done(new Error('Response body does not contain message'));\n  }\n  if (responseBody.message !== 'User updated with success!') {\n    return done(new Error('Unexpected message in response'));\n  }\n  if (Object.keys(responseBody).length !== 1) {\n    console.error('Response body contains additional fields,we only expect the response message:', responseBody);\n    return done(new Error('Response body contains additional fields'));\n  }\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
+              "err": {
+                "message": "Error: Response body contains additional fields",
+                "estack": "Error: Response body contains additional fields\n    at Test.<anonymous> (test\\/GET_PATCH_USER_BY_TOKEN.js:166:23)\n    at Test.assert (node_modules\\supertest\\lib\\test.js:172:8)\n    at localAssert (node_modules\\supertest\\lib\\test.js:120:14)\n    at fn (node_modules\\supertest\\lib\\test.js:125:7)\n    at Test.callback (node_modules\\superagent\\src\\node\\index.js:913:12)\n    at fn (node_modules\\superagent\\src\\node\\index.js:1166:18)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\src\\node\\parsers\\json.js:19:7)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                "diff": null
+              },
+              "uuid": "a950e3ae-ad43-449d-9c1a-6bb382d18166",
+              "parentUUID": "3de27086-db27-4993-87c6-f25bd135a360",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return status 403 and \"invalid token\" message for invalid token",
+              "fullTitle": "Update User API,valid,invalid,valid_wrong_token should return status 403 and \"invalid token\" message for invalid token",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var invalidToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpb';\nrequest.patch('/api/v1/users').set('Authorization', invalidToken).send(requestBody).expect(403).end(function (err, res) {\n  if (err) return done(err);\n  var responseBody = res.body;\n  console.log('Status:', res.status); // Display the response status\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
+              "err": {},
+              "uuid": "96d7cfc4-f4ca-4215-9325-bb37c6994360",
+              "parentUUID": "3de27086-db27-4993-87c6-f25bd135a360",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return status 403 for wrong token, but valid token",
+              "fullTitle": "Update User API,valid,invalid,valid_wrong_token should return status 403 for wrong token, but valid token",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var wrongToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ld19lbWFpbEBnbWFpbC5jb20iLCJpZCI6MzcwNDMsImlhdCI6MTcxMzEyNjcyOCwiZXhwIjoxNzEzMjEzMTI4fQ.y0j2VWhO5_Gwm3V2-_mrjETS_BenLyKwTMLteFV3puc';\nrequest.patch('/api/v1/users').set('Authorization', wrongToken).send(requestBody).expect(403).end(function (err, res) {\n  if (err) return done(err);\n  console.log('Status:', res.status); // Display the response status\n  done();\n});",
+              "err": {},
+              "uuid": "e043a51a-1f4c-435b-95ff-33b878c7aa03",
+              "parentUUID": "3de27086-db27-4993-87c6-f25bd135a360",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "96d7cfc4-f4ca-4215-9325-bb37c6994360",
+            "e043a51a-1f4c-435b-95ff-33b878c7aa03"
+          ],
+          "failures": [
+            "a950e3ae-ad43-449d-9c1a-6bb382d18166"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 18,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "GET_PATCH_USER_BY_TOKEN_report.html",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports",
+        "reportFilename": "GET_PATCH_USER_BY_TOKEN_report.html"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

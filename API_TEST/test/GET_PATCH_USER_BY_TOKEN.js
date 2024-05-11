@@ -27,81 +27,42 @@ let userEmail;
 let userPassword;
 let authToken;
 /*
-fiest describe bock:to create users
-*/ 
-describe('create user-authenticate it', function() {
-  /*
-  test case-1:create new user
-  */ 
+important variables used in the following describe blocks
 
+/*
+beforeEach:a before each hook,to make sure we created user & authenticate it for get & patch by token
 
-  it('should create a new user and store email and password', (done) => {
+*/  
+beforeEach((done) => {
+    // Create user
     const newUser = {
       name: faker.name.firstName(),
       email: faker.internet.email(),
       password: faker.internet.password()
     };
-console.log(newUser);
+  //register a new user first then authenticate it to continue
     request.post('/api/v1/users')
       .send(newUser)
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
-
-        const responseBody = res.body;
-
-        if (responseBody.message !== 'User registered with success') {
-          return done(new Error('Unexpected message in response'));
-        }
-
-        // Store email and password for further use
-        userEmail = newUser.email;
-        userPassword = newUser.password;
-
-        console.log('User created with email:', userEmail, 'and password:', userPassword);
-
         
-
-        done();
+        // Authenticate user
+        const credentials = {
+          email: newUser.email,
+          password: newUser.password
+        };
+  
+        request.post('/api/v1/auth')
+          .send(credentials)
+          .expect(200)
+          .end((err, res) => {
+            if (err) return done(err);
+            authToken = res.body.token; //to authenticate user to get token used to delete user by token
+            done();
+          });
       });
   });
-  /*
-  testcase-2: to authenticate the user to use token in get,delete,patch
-  */ 
-
-  it('should authenticate the user and store the token', (done) => {
-    if (!userEmail || !userPassword) {
-      return done(new Error('User email or password missing'));
-    }
-
-    const credentials = {
-      email: userEmail,
-      password: userPassword
-    };
-console.log(credentials);
-    request.post('/api/v1/auth')
-      .send(credentials)
-      .expect(200)
-      .end((err, res) => {
-        if (err) return done(err);
-
-        const responseBody = res.body;
-
-        if (!responseBody.token) {
-          return done(new Error('Token missing in response'));
-        }
-
-        // Store token for further use
-         authToken = responseBody.token;
-
-        console.log('User authenticated with token:', authToken);
-
-        done();
-      });
-  });
-
-
-    });
     /*
 second describe block:(GET_USER_BY_TOKEM)
 */  
