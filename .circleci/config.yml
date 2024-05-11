@@ -34,6 +34,7 @@ jobs:
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
+      - browser-tools/install-browser-tools
       - node/install-packages
       - node/install-packages:
           pkg-manager: npm
@@ -54,10 +55,4 @@ jobs:
 workflows:
   build:
     jobs:
-      - APItests
-      
-     
-
-
-
-      
+      - UI_TEST
