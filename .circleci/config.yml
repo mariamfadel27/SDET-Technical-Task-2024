@@ -22,11 +22,9 @@ jobs:
           name: Change Nightwatch permissions
           command: chmod +x node_modules/.bin/nightwatch
       - run:
-          name: Run Nightwatch tests/SearchDress with Firefox
-          command: npx nightwatch tests/SearchDress.js
-      - run:
-          name: Run Nightwatch tests/SubmitForm_Test.js
-          command: npx nightwatch tests/SubmitForm_Test.js
+          name: Run Nightwatch tests
+          command: npx nightwatch tests
+     
 
   APItests:
     # Build node project
