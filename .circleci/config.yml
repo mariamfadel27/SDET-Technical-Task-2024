@@ -55,4 +55,4 @@ jobs:
 workflows:
   build:
     jobs:
-      - UI_TEST
+      - APItests
