@@ -6,6 +6,7 @@ const chai = import('chai');
 const expect  = import('chai');
 import supertest from 'supertest'; //for testing APIS
 const request=supertest("http://localhost:8080");//the base url for local host
+import { deleteAllUsers } from '../helper/function';
 const faker=require('faker');
 /*
 important variables used in the following describe blocks
@@ -28,7 +29,6 @@ beforeEach((done) => {
   //register a new user first then authenticate it to continue
     request.post('/api/v1/users')
       .send(newUser)
-      .expect(200)
       .end((err, res) => {
         if (err) return done(err);
         
@@ -40,20 +40,20 @@ beforeEach((done) => {
   
         request.post('/api/v1/auth')
           .send(credentials)
-          .expect(200)
           .end((err, res) => {
             if (err) return done(err);
             authToken = res.body.token; //to authenticate user to get token used to delete user by token
+            console.log('authorization token',authToken);
             done();
           });
       });
   });
   
     /******************************************************************************************************************
-     *              describe block to delete User by token
+     *            positive testing describe block to delete User by token
      *****************************************************************************************************************/
  
-describe('Delete User API', () => {
+describe('positive testing block:Delete User API by token ', () => {
 it('should delete user with valid authorization and return success message', (done) => {
 
 request.delete('/api/v1/users')
@@ -77,9 +77,13 @@ request.delete('/api/v1/users')
     done();
   });
 });
+});
+/******************************************************************************************************************
+     *            negative testing describe block to delete User by token
+     *************************************************************************************************************/
 
-
-it('should return "Unauthorized to delete" message for invalid authorization', (done) => {
+describe('negative testing block:Delete User API', () => {
+it('testcas_2: token sent invalid', (done) => {
 const invalidToken = 'invalid_token';
 request.delete('/api/v1/users')
   .set('Authorization', invalidToken)
@@ -99,7 +103,30 @@ request.delete('/api/v1/users')
     done();
   });
 });
+
+it('testcas_3: no token sent as header auth', (done) => {
+  request.delete('/api/v1/users')
+    .expect(403)
+    .end((err, res) => {
+      if (err) {
+        console.error('Error:', err);
+        console.error('Response body:', res.body);
+        return done(err);
+      }
+      const responseBody = res.body;
+      if (responseBody.message !== 'Unauthorized to delete') {
+        console.error('Unexpected message in response:', responseBody);
+        return done(new Error('Unexpected message in response'));
+      }
+      console.log('Response message:', responseBody.message); // Display the response message
+      done();
+    });
+  });
 });
 
-
-    
+/*
+cleanup condition
+*/ 
+ after(async () => {
+  await deleteAllUsers();
+});

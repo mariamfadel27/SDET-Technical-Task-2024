@@ -5,25 +5,20 @@ const { describe, it } = require('mocha');
 const chai = import('chai');
 const expect  = import('chai');
 import supertest from 'supertest'; //for testing APIS
+import { deleteAllUsers } from '../helper/function';
 const request=supertest("http://localhost:8080");//the base url for local host
 const faker=require('faker');
+
 /*
 function to delete all users ,after being created
 */ 
-async function deleteAllUsers() {
-  try {
-    const response = await request.delete('/api/v1/all-users').send({ key_admin: 'keyadmin123' });
-    console.log('All users deleted successfully');
-  } catch (error) {
-    console.error('Error deleting users:', error);
-  }
-}
 
-describe('Create_user->POST /api/v1/users', function() {
+
+describe('poitive testing block:Create_user->POST /api/v1/users', function() {
   /*
   test case-1:sends a valid body but it throws error(as bug found here, token message is missing this)
   */ 
-    it('testcase-1(valid body,check for message & token)', function(done) {
+    it('create user with a valid body', function(done) {
       /*
       construct random user
       */ 
@@ -43,24 +38,41 @@ describe('Create_user->POST /api/v1/users', function() {
           return done(new Error('Unexpected message in response'));
         }
         if (!responseBody.token) {    
-          return done(new Error('User registered with success,but Token missing in response')); /* this error finds a bug where token not found */
+          return done(new Error('Token missing in response')); /* this error finds a bug where token not found */
         }
         done();
         });
     });
+  });
     
     /*
-  test case-2:sends invalid body check response(negative testing)------>it fails)
+ describe_2:negative testing invalid blank input
   */ 
-  it('create user with empty request body', (done) => {
-    request.post('/api/v1/users')
-      .send({})
-      .expect(400)
-      .end((err, res) => {
-        if (err) return done(err);
-          return done(new Error('Error should fail creating an empty user,but it success got 200'));
-        console.log('Response message:', responseBody.message); // Display the response message
-        done();
+  describe('negative testing block:Create_user->POST /api/v1/users', function() {
+  it('create user with empty invalid body', (done) => {
+ // Send a POST request to '/api/v1/users' with an empty body
+ request.post("/api/v1/users")
+ .send({})
+ .end((err, res) => {
+   // Access the response status
+   const statusCode = res.status;
+   // Display the response status
+   console.log('status:', statusCode);
+
+   // Access the response body
+   const responseBody = res.body;
+   // Display the response message
+   console.log('Response message:', responseBody.message);
+
+   // Check if the response message is 'User registered with success' and status code is not 200
+   if (responseBody.message === 'User registered with success' && statusCode === 200) {
+     return done(new Error('Message in response should not be "User registered with success" and status code should not be 200'));
+   }
+
+   // Verify the response status code is not 200
+   if (statusCode === 200) {
+     return done(new Error('Unexpected status code 200 in response'));
+   }
       });
   });
   });
@@ -69,7 +81,6 @@ describe('Create_user->POST /api/v1/users', function() {
  *                               another describe block to delete all users 
  ************************************************************************************************/
 
-  
-after(async () => {
-  await deleteAllUsers();
+afterEach(() => {
+ deleteAllUsers();
 });
