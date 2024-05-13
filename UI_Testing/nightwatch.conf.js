@@ -32,7 +32,12 @@ module.exports = {
   // See https://nightwatchjs.org/guide/concepts/test-globals.html#external-test-globals
   globals_path : '',
 
-  webdriver: {},
+  webdriver: {
+  
+      // existing webdriver settings...
+      log_path: './logs', // specify your log path here
+      
+  },
   
   test_workers: {
     enabled: true,
@@ -56,6 +61,8 @@ module.exports = {
 
       webdriver: {
         start_process: true,
+         // existing webdriver settings...
+      log_path: './logs', // specify your log path here
         server_path: ''
       }
       
@@ -72,6 +79,8 @@ module.exports = {
         }
       },
       webdriver: {
+         // existing webdriver settings...
+      log_path: './logs', // specify your log path here
         start_process: true,
         server_path: '',
         cli_args: [
@@ -99,6 +108,8 @@ module.exports = {
       },
 
       webdriver: {
+         // existing webdriver settings...
+      log_path: './logs', // specify your log path here
         start_process: true,
         server_path: '',
         cli_args: [
@@ -120,6 +131,8 @@ module.exports = {
       },
 
       webdriver: {
+         // existing webdriver settings...
+      log_path: './logs', // specify your log path here
         start_process: true,
         // Download msedgedriver from https://docs.microsoft.com/en-us/microsoft-edge/webdriver-chromium/
         //  and set the location below:
@@ -181,8 +194,10 @@ module.exports = {
 
       disable_error_log: true,
       webdriver: {
+         // existing webdriver settings...
+      log_path: './logs', // specify your log path here
         timeout_options: {
-          timeout: 15000,
+          timeout: 1500000,
           retry_attempts: 3
         },
         keep_alive: true,
