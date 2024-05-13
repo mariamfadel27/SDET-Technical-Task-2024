@@ -21,7 +21,10 @@ const correct_requestBody = {
 create users before each test case
 */ 
 beforeEach(async() => {
+  /*create random 5 users*/ 
+  for (let i = 0; i < 5; i++) {
  await create_new_user();
+  }
       });
   
   /******************************************************************************************************************
@@ -69,6 +72,23 @@ beforeEach(async() => {
      
       request.delete('/api/v1/all-users')
         .send({})
+        .expect(403)
+        .end((err, res) => {
+          if (err) return done(err);
+          const responseBody = res.body;
+          if (responseBody.message !== 'Unauthorized access') {
+            return done(new Error('Unexpected message in response'));
+          }
+          console.log('Response message:', responseBody.message); // Display the response message
+          done();
+        });
+    });
+    it('negative: test 4:should return "Unauthorized access" wrong key_admin->spelling field', (done) => {
+      const requestBody = {
+        key_n: 'keyadmin123'
+      };
+      request.delete('/api/v1/all-users')
+        .send(requestBody)
         .expect(403)
         .end((err, res) => {
           if (err) return done(err);

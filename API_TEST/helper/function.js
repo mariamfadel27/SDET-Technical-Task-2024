@@ -12,7 +12,7 @@ function to delete all registerd user
 
 export async function deleteAllUsers() {
     const response = await request.delete('/api/v1/all-users').send({ key_admin: 'keyadmin123' });
-    console.log(response.body);
+   
 }
 
 /*
@@ -27,7 +27,7 @@ export async function create_new_user() {
     password: faker.internet.password()
   };
     const response = await request.post('/api/v1/users').send(newUser);
-    console.log( 'response.body');
+
 }
 /*
 Function to create a new user

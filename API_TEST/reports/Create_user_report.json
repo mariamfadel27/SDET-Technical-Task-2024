@@ -1,14 +1,14 @@
 {
   "stats": {
-    "suites": 1,
-    "tests": 2,
+    "suites": 2,
+    "tests": 5,
     "passes": 0,
     "pending": 0,
-    "failures": 2,
-    "start": "2024-05-11T22:07:03.543Z",
-    "end": "2024-05-11T22:07:03.644Z",
-    "duration": 101,
-    "testsRegistered": 2,
+    "failures": 5,
+    "start": "2024-05-13T19:15:25.391Z",
+    "end": "2024-05-13T19:15:25.512Z",
+    "duration": 121,
+    "testsRegistered": 5,
     "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
@@ -18,27 +18,27 @@
   },
   "results": [
     {
-      "uuid": "1028d92b-aa1c-4f31-87c7-500d11a7fcf4",
+      "uuid": "f3a37482-50cd-456f-85a7-fef15302218a",
       "title": "",
-      "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\Create_user.js",
-      "file": "\\test\\Create_user.js",
+      "fullFile": "",
+      "file": "",
       "beforeHooks": [],
       "afterHooks": [
         {
-          "title": "\"after all\" hook in \"{root}\"",
-          "fullTitle": "\"after all\" hook in \"{root}\"",
+          "title": "\"after each\" hook in \"{root}\"",
+          "fullTitle": "\"after each\" hook in \"{root}\"",
           "timedOut": false,
-          "duration": 8,
+          "duration": 0,
           "state": null,
           "speed": null,
           "pass": false,
           "fail": false,
           "pending": false,
           "context": null,
-          "code": "var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); });",
+          "code": "(0, _function.deleteAllUsers)();",
           "err": {},
-          "uuid": "29bef6fc-a6f2-4af6-90d7-8184a2582a1e",
-          "parentUUID": "1028d92b-aa1c-4f31-87c7-500d11a7fcf4",
+          "uuid": "fb3e4a0b-fa00-43ce-bcf6-bdf7d0336c95",
+          "parentUUID": "f3a37482-50cd-456f-85a7-fef15302218a",
           "isHook": true,
           "skipped": false
         }
@@ -46,54 +46,32 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "a40c8dc9-1b10-4197-b801-14bfc274db40",
-          "title": "Create_user->POST /api/v1/users",
+          "uuid": "81b8ef81-7e42-477d-a462-a4292a99018e",
+          "title": "poitive testing block:Create_user->POST /api/v1/users",
           "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\Create_user.js",
           "file": "\\test\\Create_user.js",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "testcase-1(valid body,check for message & token)",
-              "fullTitle": "Create_user->POST /api/v1/users testcase-1(valid body,check for message & token)",
+              "title": "create user with a valid body",
+              "fullTitle": "poitive testing block:Create_user->POST /api/v1/users create user with a valid body",
               "timedOut": false,
-              "duration": 64,
+              "duration": 55,
               "state": "failed",
               "speed": null,
               "pass": false,
               "fail": true,
               "pending": false,
               "context": null,
-              "code": "/*\nconstruct random user\n*/\nvar user = {\n  name: faker.name.firstName(),\n  email: faker.internet.email(),\n  password: faker.internet.password()\n};\nconsole.log(user);\nrequest.post(\"/api/v1/users\").send(user).expect(200).end(function (err, res) {\n  var responseBody = res.body;\n  console.log('Response message:', responseBody.message); // Display the response message\n  if (responseBody.message !== 'User registered with success') {\n    return done(new Error('Unexpected message in response'));\n  }\n  if (!responseBody.token) {\n    return done(new Error('User registered with success,but Token missing in response')); /* this error finds a bug where token not found */\n  }\n  done();\n});",
+              "code": "/*\nconstruct random user\n*/\nvar user = {\n  name: faker.name.firstName(),\n  email: faker.internet.email(),\n  password: faker.internet.password()\n};\nconsole.log(user);\nrequest.post(\"/api/v1/users\").send(user).expect(200).end(function (err, res) {\n  var responseBody = res.body;\n  console.log('Response message:', responseBody.message); // Display the response message\n  if (responseBody.message !== 'User registered with success') {\n    return done(new Error('Unexpected message in response'));\n  }\n  if (!responseBody.token) {\n    return done(new Error('Token missing in response')); /* this error finds a bug where token not found */\n  }\n  done();\n});",
               "err": {
-                "message": "Error: User registered with success,but Token missing in response",
-                "estack": "Error: User registered with success,but Token missing in response\n    at Test.<anonymous> (test\\/Create_user.js:47:23)\n    at Test.assert (node_modules\\supertest\\lib\\test.js:172:8)\n    at localAssert (node_modules\\supertest\\lib\\test.js:120:14)\n    at fn (node_modules\\supertest\\lib\\test.js:125:7)\n    at Test.callback (node_modules\\superagent\\src\\node\\index.js:913:12)\n    at fn (node_modules\\superagent\\src\\node\\index.js:1166:18)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\src\\node\\parsers\\json.js:19:7)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                "message": "Error: Token missing in response",
+                "estack": "Error: Token missing in response\n    at Test.<anonymous> (test\\/Create_user.js:41:23)\n    at Test.assert (node_modules\\supertest\\lib\\test.js:172:8)\n    at localAssert (node_modules\\supertest\\lib\\test.js:120:14)\n    at fn (node_modules\\supertest\\lib\\test.js:125:7)\n    at Test.callback (node_modules\\superagent\\src\\node\\index.js:913:12)\n    at fn (node_modules\\superagent\\src\\node\\index.js:1166:18)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\src\\node\\parsers\\json.js:19:7)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)",
                 "diff": null
               },
-              "uuid": "627d7a90-5377-4c17-9cb9-c81f39d35b6c",
-              "parentUUID": "a40c8dc9-1b10-4197-b801-14bfc274db40",
-              "isHook": false,
-              "skipped": false
-            },
-            {
-              "title": "create user with empty request body",
-              "fullTitle": "Create_user->POST /api/v1/users create user with empty request body",
-              "timedOut": false,
-              "duration": 6,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
-              "pending": false,
-              "context": null,
-              "code": "request.post('/api/v1/users').send({}).expect(400).end(function (err, res) {\n  if (err) return done(err);\n  return done(new Error('Error should fail creating an empty user,but it success got 200'));\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
-              "err": {
-                "message": "Error: expected 400 \"Bad Request\", got 401 \"Unauthorized\"",
-                "estack": "Error: expected 400 \"Bad Request\", got 401 \"Unauthorized\"\n    at Context.<anonymous> (test\\/Create_user.js:59:8)\n    at processImmediate (node:internal/timers:478:21)\n----\n    at Test._assertStatus (node_modules\\supertest\\lib\\test.js:252:14)\n    at C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\node_modules\\supertest\\lib\\test.js:308:13\n    at Test._assertFunction (node_modules\\supertest\\lib\\test.js:285:13)\n    at Test.assert (node_modules\\supertest\\lib\\test.js:164:23)\n    at localAssert (node_modules\\supertest\\lib\\test.js:120:14)\n    at fn (node_modules\\supertest\\lib\\test.js:125:7)\n    at Test.callback (node_modules\\superagent\\src\\node\\index.js:925:3)\n    at fn (node_modules\\superagent\\src\\node\\index.js:1166:18)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\src\\node\\parsers\\json.js:19:7)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)",
-                "diff": null
-              },
-              "uuid": "1d03cfe7-4916-4f63-8263-8ec31e91e7fc",
-              "parentUUID": "a40c8dc9-1b10-4197-b801-14bfc274db40",
+              "uuid": "fac3b295-0f36-457d-ae4c-263d5d6de8cc",
+              "parentUUID": "81b8ef81-7e42-477d-a462-a4292a99018e",
               "isHook": false,
               "skipped": false
             }
@@ -101,12 +79,123 @@
           "suites": [],
           "passes": [],
           "failures": [
-            "627d7a90-5377-4c17-9cb9-c81f39d35b6c",
-            "1d03cfe7-4916-4f63-8263-8ec31e91e7fc"
+            "fac3b295-0f36-457d-ae4c-263d5d6de8cc"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 70,
+          "duration": 55,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "0277f674-4be2-475c-8efc-2587ca71c8c7",
+          "title": "negative testing block:Create_user->POST /api/v1/users",
+          "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\Create_user.js",
+          "file": "\\test\\Create_user.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "create user with empty invalid body",
+              "fullTitle": "negative testing block:Create_user->POST /api/v1/users create user with empty invalid body",
+              "timedOut": false,
+              "duration": 12,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Send a POST request to '/api/v1/users' with an empty body\nrequest.post(\"/api/v1/users\").send({}).end(function (err, res) {\n  // Access the response status\n  var statusCode = res.status;\n  // Display the response status\n  console.log('status:', statusCode);\n  // Access the response body\n  var responseBody = res.body;\n  // Display the response message\n  console.log('Response message:', responseBody.message);\n  // Check if the response message is 'User registered with success' and status code is not 200\n  if (responseBody.message === 'User registered with success' && statusCode === 200) {\n    return done(new Error('Message in response should not be \"User registered with success\" and status code should not be 200'));\n  }\n  // Verify the response status code is not 200\n  if (statusCode === 200) {\n    return done(new Error('Unexpected status code 200 in response'));\n  }\n  done();\n});",
+              "err": {
+                "message": "Error: Message in response should not be \"User registered with success\" and status code should not be 200",
+                "estack": "Error: Message in response should not be \"User registered with success\" and status code should not be 200\n    at Test.<anonymous> (test\\/Create_user.js:70:18)\n    at Test.assert (node_modules\\supertest\\lib\\test.js:172:8)\n    at localAssert (node_modules\\supertest\\lib\\test.js:120:14)\n    at fn (node_modules\\supertest\\lib\\test.js:125:7)\n    at Test.callback (node_modules\\superagent\\src\\node\\index.js:913:12)\n    at fn (node_modules\\superagent\\src\\node\\index.js:1166:18)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\src\\node\\parsers\\json.js:19:7)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                "diff": null
+              },
+              "uuid": "359fb3de-86a2-4a20-a084-0e2e7fca7729",
+              "parentUUID": "0277f674-4be2-475c-8efc-2587ca71c8c7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "create user with email is missing",
+              "fullTitle": "negative testing block:Create_user->POST /api/v1/users create user with email is missing",
+              "timedOut": false,
+              "duration": 9,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var user = {\n  name: faker.name.firstName(),\n  password: faker.internet.password()\n};\n// Send a POST request to '/api/v1/users' with an empty body\nrequest.post(\"/api/v1/users\").send(user).end(function (err, res) {\n  // Access the response status\n  var statusCode = res.status;\n  // Display the response status\n  console.log('status:', statusCode);\n  // Access the response body\n  var responseBody = res.body;\n  // Display the response message\n  console.log('Response message:', responseBody.message);\n  // Check if the response message is 'User registered with success' and status code is not 200\n  if (responseBody.message === 'User registered with success' && statusCode === 200) {\n    return done(new Error('Message in response should not be \"User registered with success\" and status code should not be 200'));\n  }\n  // Verify the response status code is not 200\n  if (statusCode === 200) {\n    return done(new Error('Unexpected status code 200 in response'));\n  }\n  done();\n});",
+              "err": {
+                "message": "Error: Message in response should not be \"User registered with success\" and status code should not be 200",
+                "estack": "Error: Message in response should not be \"User registered with success\" and status code should not be 200\n    at Test.<anonymous> (test\\/Create_user.js:103:21)\n    at Test.assert (node_modules\\supertest\\lib\\test.js:172:8)\n    at localAssert (node_modules\\supertest\\lib\\test.js:120:14)\n    at fn (node_modules\\supertest\\lib\\test.js:125:7)\n    at Test.callback (node_modules\\superagent\\src\\node\\index.js:913:12)\n    at fn (node_modules\\superagent\\src\\node\\index.js:1166:18)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\src\\node\\parsers\\json.js:19:7)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                "diff": null
+              },
+              "uuid": "286876b9-c563-4a30-a7eb-0eba3ca3595b",
+              "parentUUID": "0277f674-4be2-475c-8efc-2587ca71c8c7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "create user with name is missing",
+              "fullTitle": "negative testing block:Create_user->POST /api/v1/users create user with name is missing",
+              "timedOut": false,
+              "duration": 10,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var user = {\n  email: faker.internet.email(),\n  password: faker.internet.password()\n};\n// Send a POST request to '/api/v1/users' with an empty body\nrequest.post(\"/api/v1/users\").send(user).end(function (err, res) {\n  // Access the response status\n  var statusCode = res.status;\n  // Display the response status\n  console.log('status:', statusCode);\n  // Access the response body\n  var responseBody = res.body;\n  // Display the response message\n  console.log('Response message:', responseBody.message);\n  // Check if the response message is 'User registered with success' and status code is not 200\n  if (responseBody.message === 'User registered with success' && statusCode === 200) {\n    return done(new Error('Message in response should not be \"User registered with success\" and status code should not be 200'));\n  }\n  // Verify the response status code is not 200\n  if (statusCode === 200) {\n    return done(new Error('Unexpected status code 200 in response'));\n  }\n  done();\n});",
+              "err": {
+                "message": "Error: Message in response should not be \"User registered with success\" and status code should not be 200",
+                "estack": "Error: Message in response should not be \"User registered with success\" and status code should not be 200\n    at Test.<anonymous> (test\\/Create_user.js:136:21)\n    at Test.assert (node_modules\\supertest\\lib\\test.js:172:8)\n    at localAssert (node_modules\\supertest\\lib\\test.js:120:14)\n    at fn (node_modules\\supertest\\lib\\test.js:125:7)\n    at Test.callback (node_modules\\superagent\\src\\node\\index.js:913:12)\n    at fn (node_modules\\superagent\\src\\node\\index.js:1166:18)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\src\\node\\parsers\\json.js:19:7)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                "diff": null
+              },
+              "uuid": "a2410f5d-3699-4456-9f88-bcacbb0ac449",
+              "parentUUID": "0277f674-4be2-475c-8efc-2587ca71c8c7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "create user with password is missing",
+              "fullTitle": "negative testing block:Create_user->POST /api/v1/users create user with password is missing",
+              "timedOut": false,
+              "duration": 11,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var user = {\n  name: faker.name.firstName(),\n  email: faker.internet.email()\n};\n// Send a POST request to '/api/v1/users' with an empty body\nrequest.post(\"/api/v1/users\").send(user).end(function (err, res) {\n  // Access the response status\n  var statusCode = res.status;\n  // Display the response status\n  console.log('status:', statusCode);\n  // Access the response body\n  var responseBody = res.body;\n  // Display the response message\n  console.log('Response message:', responseBody.message);\n  // Check if the response message is 'User registered with success' and status code is not 200\n  if (responseBody.message === 'User registered with success' && statusCode === 200) {\n    return done(new Error('Message in response should not be \"User registered with success\" and status code should not be 200'));\n  }\n  // Verify the response status code is not 200\n  if (statusCode === 200) {\n    return done(new Error('Unexpected status code 200 in response'));\n  }\n  done();\n});",
+              "err": {
+                "message": "Error: Message in response should not be \"User registered with success\" and status code should not be 200",
+                "estack": "Error: Message in response should not be \"User registered with success\" and status code should not be 200\n    at Test.<anonymous> (test\\/Create_user.js:170:21)\n    at Test.assert (node_modules\\supertest\\lib\\test.js:172:8)\n    at localAssert (node_modules\\supertest\\lib\\test.js:120:14)\n    at fn (node_modules\\supertest\\lib\\test.js:125:7)\n    at Test.callback (node_modules\\superagent\\src\\node\\index.js:913:12)\n    at fn (node_modules\\superagent\\src\\node\\index.js:1166:18)\n    at IncomingMessage.<anonymous> (node_modules\\superagent\\src\\node\\parsers\\json.js:19:7)\n    at IncomingMessage.emit (node:events:530:35)\n    at endReadableNT (node:internal/streams/readable:1696:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)",
+                "diff": null
+              },
+              "uuid": "ab297cc6-78f6-47e0-a53d-28132f17ddd6",
+              "parentUUID": "0277f674-4be2-475c-8efc-2587ca71c8c7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "359fb3de-86a2-4a20-a084-0e2e7fca7729",
+            "286876b9-c563-4a30-a7eb-0eba3ca3595b",
+            "a2410f5d-3699-4456-9f88-bcacbb0ac449",
+            "ab297cc6-78f6-47e0-a53d-28132f17ddd6"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 42,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

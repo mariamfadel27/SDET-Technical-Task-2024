@@ -1,14 +1,14 @@
 {
   "stats": {
-    "suites": 1,
-    "tests": 1,
-    "passes": 1,
+    "suites": 2,
+    "tests": 5,
+    "passes": 5,
     "pending": 0,
     "failures": 0,
-    "start": "2024-05-12T14:23:47.851Z",
-    "end": "2024-05-12T14:23:47.924Z",
-    "duration": 73,
-    "testsRegistered": 1,
+    "start": "2024-05-13T19:16:09.474Z",
+    "end": "2024-05-13T19:16:09.592Z",
+    "duration": 118,
+    "testsRegistered": 5,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -18,34 +18,14 @@
   },
   "results": [
     {
-      "uuid": "19f99e2b-a6a1-4b3c-ada6-07825b298f0d",
+      "uuid": "8a47cf5f-9f90-448a-b444-609abe5437a1",
       "title": "",
-      "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\authenticate_user.js",
-      "file": "\\test\\authenticate_user.js",
+      "fullFile": "",
+      "file": "",
       "beforeHooks": [
         {
           "title": "\"before each\" hook in \"{root}\"",
           "fullTitle": "\"before each\" hook in \"{root}\"",
-          "timedOut": false,
-          "duration": 52,
-          "state": null,
-          "speed": null,
-          "pass": false,
-          "fail": false,
-          "pending": false,
-          "context": null,
-          "code": "var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); });",
-          "err": {},
-          "uuid": "508ff345-2c89-47b6-9d40-bf959ec343bf",
-          "parentUUID": "19f99e2b-a6a1-4b3c-ada6-07825b298f0d",
-          "isHook": true,
-          "skipped": false
-        }
-      ],
-      "afterHooks": [
-        {
-          "title": "\"after all\" hook in \"{root}\"",
-          "fullTitle": "\"after all\" hook in \"{root}\"",
           "timedOut": false,
           "duration": 7,
           "state": null,
@@ -56,8 +36,28 @@
           "context": null,
           "code": "var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); });",
           "err": {},
-          "uuid": "b80392b7-4cc4-4890-be41-9219498a177c",
-          "parentUUID": "19f99e2b-a6a1-4b3c-ada6-07825b298f0d",
+          "uuid": "26e1ab7f-6a80-4dec-9059-8563f9f9b1ab",
+          "parentUUID": "8a47cf5f-9f90-448a-b444-609abe5437a1",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "afterHooks": [
+        {
+          "title": "\"after all\" hook in \"{root}\"",
+          "fullTitle": "\"after all\" hook in \"{root}\"",
+          "timedOut": false,
+          "duration": 5,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); });",
+          "err": {},
+          "uuid": "90d7b79a-9af4-4fab-ae25-2b2e8a04d33e",
+          "parentUUID": "8a47cf5f-9f90-448a-b444-609abe5437a1",
           "isHook": true,
           "skipped": false
         }
@@ -65,7 +65,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "ce857deb-7853-4058-a7fb-02771148576b",
+          "uuid": "695f052e-e6f2-4afd-9fbb-eb8001bc79d2",
           "title": "User Authentication API =>negative testing",
           "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\authenticate_user.js",
           "file": "\\test\\authenticate_user.js",
@@ -73,10 +73,28 @@
           "afterHooks": [],
           "tests": [
             {
+              "title": "testcase 1:(autnenticate->login) unregistered user",
+              "fullTitle": "User Authentication API =>negative testing testcase 1:(autnenticate->login) unregistered user",
+              "timedOut": false,
+              "duration": 7,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var credentials = {\n  email: \"not_registestered@gmail.com\",\n  password: \"not_registered\"\n};\nrequest.post('/api/v1/auth').send(credentials).expect(401).end(function (err, res) {\n  if (err) return done(err);\n  var responseBody = res.body;\n  if (responseBody.message !== 'Incorrect email or password') {\n    return done(new Error('Unexpected message in response'));\n  }\n  console.log('Status:', res.status); // Display the response status\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
+              "err": {},
+              "uuid": "35cd42e9-4ac7-4328-a49c-e7030ed36168",
+              "parentUUID": "695f052e-e6f2-4afd-9fbb-eb8001bc79d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
               "title": "testcase 2:(autnenticate->login) wrong email",
               "fullTitle": "User Authentication API =>negative testing testcase 2:(autnenticate->login) wrong email",
               "timedOut": false,
-              "duration": 8,
+              "duration": 4,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -85,20 +103,98 @@
               "context": null,
               "code": "var credentials = {\n  email: \"wrong@gmail.com\",\n  password: userPassword\n};\nconsole.log(credentials.password);\nrequest.post('/api/v1/auth').send(credentials).expect(401).end(function (err, res) {\n  if (err) return done(err);\n  var responseBody = res.body;\n  if (responseBody.message !== 'Incorrect email or password') {\n    return done(new Error('Unexpected message in response'));\n  }\n  console.log('Status:', res.status); // Display the response status\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
               "err": {},
-              "uuid": "f33328b1-4e3d-4fc6-8b53-6a1d9418124c",
-              "parentUUID": "ce857deb-7853-4058-a7fb-02771148576b",
+              "uuid": "5ea4cc52-3e83-4f0e-93c6-2c46cb1ffdf0",
+              "parentUUID": "695f052e-e6f2-4afd-9fbb-eb8001bc79d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "testcase 3:(autnenticate->login) wrong password",
+              "fullTitle": "User Authentication API =>negative testing testcase 3:(autnenticate->login) wrong password",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var credentials = {\n  email: userEmail,\n  password: \"wrongpass\"\n};\nrequest.post('/api/v1/auth').send(credentials).expect(401).end(function (err, res) {\n  if (err) return done(err);\n  var responseBody = res.body;\n  if (responseBody.message !== 'Incorrect email or password') {\n    return done(new Error('Unexpected message in response'));\n  }\n  console.log('Status:', res.status); // Display the response status\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
+              "err": {},
+              "uuid": "c8df32fb-4a2b-4754-b310-810b96341d52",
+              "parentUUID": "695f052e-e6f2-4afd-9fbb-eb8001bc79d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "testcase 4:(autnenticate->login) empty body field",
+              "fullTitle": "User Authentication API =>negative testing testcase 4:(autnenticate->login) empty body field",
+              "timedOut": false,
+              "duration": 3,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "request.post('/api/v1/auth').send({}).expect(401).end(function (err, res) {\n  if (err) return done(err);\n  var responseBody = res.body;\n  if (responseBody.message !== 'Incorrect email or password') {\n    return done(new Error('Unexpected message in response'));\n  }\n  console.log('Status:', res.status); // Display the response status\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
+              "err": {},
+              "uuid": "02459e84-5a26-447d-a01f-b303efafd40c",
+              "parentUUID": "695f052e-e6f2-4afd-9fbb-eb8001bc79d2",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "f33328b1-4e3d-4fc6-8b53-6a1d9418124c"
+            "35cd42e9-4ac7-4328-a49c-e7030ed36168",
+            "5ea4cc52-3e83-4f0e-93c6-2c46cb1ffdf0",
+            "c8df32fb-4a2b-4754-b310-810b96341d52",
+            "02459e84-5a26-447d-a01f-b303efafd40c"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 8,
+          "duration": 19,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "b5da48aa-9488-44a0-8dff-54f72df23d45",
+          "title": "User Authentication API for a registered user",
+          "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\authenticate_user.js",
+          "file": "\\test\\authenticate_user.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should authenticate the user and store the token",
+              "fullTitle": "User Authentication API for a registered user should authenticate the user and store the token",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (!userEmail || !userPassword) {\n  return done(new Error('User email or password missing'));\n}\nvar credentials = {\n  email: userEmail,\n  password: userPassword\n};\nrequest.post('/api/v1/auth').send(credentials).expect(200).end(function (err, res) {\n  if (err) return done(err);\n  var responseBody = res.body;\n  if (!responseBody.token) {\n    return done(new Error('Token missing in response'));\n  }\n  // Store token for further use\n  authToken = responseBody.token;\n  console.log('User authenticated with token:', authToken);\n  console.log('status:', res.status);\n  done();\n});",
+              "err": {},
+              "uuid": "669dd389-6521-4413-8cda-8bdab9dae012",
+              "parentUUID": "b5da48aa-9488-44a0-8dff-54f72df23d45",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "669dd389-6521-4413-8cda-8bdab9dae012"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

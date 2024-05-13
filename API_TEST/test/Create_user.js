@@ -49,6 +49,7 @@ describe('poitive testing block:Create_user->POST /api/v1/users', function() {
  describe_2:negative testing invalid blank input
   */ 
   describe('negative testing block:Create_user->POST /api/v1/users', function() {
+    /*1- body sent is black*/ 
   it('create user with empty invalid body', (done) => {
  // Send a POST request to '/api/v1/users' with an empty body
  request.post("/api/v1/users")
@@ -73,8 +74,109 @@ describe('poitive testing block:Create_user->POST /api/v1/users', function() {
    if (statusCode === 200) {
      return done(new Error('Unexpected status code 200 in response'));
    }
+   done();
       });
   });
+
+  /*2- body sent email is missing*/ 
+  it('create user with email is missing', (done) => {
+    const user = {
+      name: faker.name.firstName(),
+      password: faker.internet.password()
+    };
+    // Send a POST request to '/api/v1/users' with an empty body
+    request.post("/api/v1/users")
+    .send(user)
+    .end((err, res) => {
+      // Access the response status
+      const statusCode = res.status;
+      // Display the response status
+      console.log('status:', statusCode);
+   
+      // Access the response body
+      const responseBody = res.body;
+      // Display the response message
+      console.log('Response message:', responseBody.message);
+   
+      // Check if the response message is 'User registered with success' and status code is not 200
+      if (responseBody.message === 'User registered with success' && statusCode === 200) {
+        return done(new Error('Message in response should not be "User registered with success" and status code should not be 200'));
+      }
+   
+      // Verify the response status code is not 200
+      if (statusCode === 200) {
+        return done(new Error('Unexpected status code 200 in response'));
+      }
+      done();
+         });
+     });
+
+     /*2- body sent name is missing*/ 
+  it('create user with name is missing', (done) => {
+    const user = {
+      email:faker.internet.email(),
+      password: faker.internet.password()
+    };
+    // Send a POST request to '/api/v1/users' with an empty body
+    request.post("/api/v1/users")
+    .send(user)
+    .end((err, res) => {
+      // Access the response status
+      const statusCode = res.status;
+      // Display the response status
+      console.log('status:', statusCode);
+   
+      // Access the response body
+      const responseBody = res.body;
+      // Display the response message
+      console.log('Response message:', responseBody.message);
+   
+      // Check if the response message is 'User registered with success' and status code is not 200
+      if (responseBody.message === 'User registered with success' && statusCode === 200) {
+        return done(new Error('Message in response should not be "User registered with success" and status code should not be 200'));
+      }
+   
+      // Verify the response status code is not 200
+      if (statusCode === 200) {
+        return done(new Error('Unexpected status code 200 in response'));
+      }
+      done();
+         });
+     });
+
+     
+     /*4- body sent password is missing*/ 
+  it('create user with password is missing', (done) => {
+    const user = {
+      name: faker.name.firstName(),
+     email:faker.internet.email()
+    };
+    // Send a POST request to '/api/v1/users' with an empty body
+    request.post("/api/v1/users")
+    .send(user)
+    .end((err, res) => {
+      // Access the response status
+      const statusCode = res.status;
+      // Display the response status
+      console.log('status:', statusCode);
+   
+      // Access the response body
+      const responseBody = res.body;
+      // Display the response message
+      console.log('Response message:', responseBody.message);
+   
+      // Check if the response message is 'User registered with success' and status code is not 200
+      if (responseBody.message === 'User registered with success' && statusCode === 200) {
+        return done(new Error('Message in response should not be "User registered with success" and status code should not be 200'));
+      }
+   
+      // Verify the response status code is not 200
+      if (statusCode === 200) {
+        return done(new Error('Unexpected status code 200 in response'));
+      }
+      done();
+         });
+     });
   });
  
 /*************************************************************************************************

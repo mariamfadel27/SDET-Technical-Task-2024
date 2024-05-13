@@ -119,8 +119,7 @@ first describe block:(GET_USER_BY_TOKEN) (valid/invalid auth)
         /*
         test_case-3:invalid authorization (negative testing)
         */ 
-        it('test_case-3: no passed header token,should return "Unauthorized" with status 403 ', (done) => {
-          const invalidToken = 'invalid_token';
+        it('test_case-3: no passed token in the header,should return "Unauthorized" with status 403 ', (done) => {
       
           request.get('/api/v1/users')
             .expect(403)
@@ -153,14 +152,16 @@ first describe block:(GET_USER_BY_TOKEN) (valid/invalid auth)
   /***********************************************************************************************
    *     third describe block(Positive):(patch_USER_BY_TOKEN) (valid-authorization ,valid-body)
    ***********************************************************************************************/
-
+/*
+global for all patch requests
+*/
   const requestBody = {
     "name": "newName",
     "email": "new_email@gmail.com",
     "password": "newpassword123"
   };
 
-    describe('Update User API,valid,invalid,valid_wrong_token', () => {
+    describe('Update User API,Positive testing', () => {
     
       /*
       test_case_1:with valid & correct token,(positive_happy scenario)
@@ -171,7 +172,7 @@ first describe block:(GET_USER_BY_TOKEN) (valid/invalid auth)
           .send(requestBody)
           .expect(200)
           .end((err, res) => {
-        if (err) {
+        if (err) { 
           console.error('Error:', err);
           console.error('Response body:', res.body);
           return done(err);

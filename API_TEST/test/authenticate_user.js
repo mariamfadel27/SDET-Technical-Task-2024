@@ -119,7 +119,7 @@ it ('testcase 3:(autnenticate->login) wrong password', (done) => {
 /*
 testcase 4:empty body sent ->login
 */ 
-it ('testcase 3:(autnenticate->login) wrong password', (done) => {
+it ('testcase 4:(autnenticate->login) empty body field', (done) => {
  
   request.post('/api/v1/auth')
     .send({})

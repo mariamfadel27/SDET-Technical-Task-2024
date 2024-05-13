@@ -122,6 +122,27 @@ it('testcas_3: no token sent as header auth', (done) => {
       done();
     });
   });
+  it('testcas_3: token sent valid but wrong', (done) => {
+    const WRONGToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwiaWQiOjk2NDQ3LCJpYXQiOjE3MTU2MTQ0MDAsImV4cCI6MTcxNTcwMDgwMH0.BIkV-TndTt9En6uThDUQnNR5iYtW21vD1tEZ5ZxcaFg';
+    request.delete('/api/v1/users')
+      .set('Authorization', WRONGToken)
+      .expect(403)
+      .end((err, res) => {
+        if (err) {
+          console.error('Error:', err);
+          console.error('Response body:', res.body);
+          return done(err);
+        }
+        const responseBody = res.body;
+        if (responseBody.message !== 'Unauthorized to delete') {
+          console.error('Unexpected message in response:', responseBody);
+          return done(new Error('Unexpected message in response'));
+        }
+        console.log('Response message:', responseBody.message); // Display the response message
+        done();
+      });
+    });
+    
 });
 
 /*

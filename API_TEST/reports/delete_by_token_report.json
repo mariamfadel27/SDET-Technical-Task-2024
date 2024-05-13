@@ -1,0 +1,218 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-05-13T19:15:34.462Z",
+    "end": "2024-05-13T19:15:34.586Z",
+    "duration": 124,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "362b0ed0-115f-47c4-a6fb-0c9a55c01f48",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [
+        {
+          "title": "\"before each\" hook in \"{root}\"",
+          "fullTitle": "\"before each\" hook in \"{root}\"",
+          "timedOut": false,
+          "duration": 9,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "// Create user\nvar newUser = {\n  name: faker.name.firstName(),\n  email: faker.internet.email(),\n  password: faker.internet.password()\n};\n//register a new user first then authenticate it to continue\nrequest.post('/api/v1/users').send(newUser).end(function (err, res) {\n  if (err) return done(err);\n  // Authenticate user\n  var credentials = {\n    email: newUser.email,\n    password: newUser.password\n  };\n  request.post('/api/v1/auth').send(credentials).end(function (err, res) {\n    if (err) return done(err);\n    authToken = res.body.token; //to authenticate user to get token used to delete user by token\n    console.log('authorization token', authToken);\n    done();\n  });\n});",
+          "err": {},
+          "uuid": "6f63a365-58aa-40ea-bcd5-c6e0708afa80",
+          "parentUUID": "362b0ed0-115f-47c4-a6fb-0c9a55c01f48",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "afterHooks": [
+        {
+          "title": "\"after all\" hook in \"{root}\"",
+          "fullTitle": "\"after all\" hook in \"{root}\"",
+          "timedOut": false,
+          "duration": 6,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); });",
+          "err": {},
+          "uuid": "39a544e3-88c7-4112-89cc-06ab68ca33ff",
+          "parentUUID": "362b0ed0-115f-47c4-a6fb-0c9a55c01f48",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e0ddae4c-5743-4b71-a285-d3552f4fe074",
+          "title": "positive testing block:Delete User API by token ",
+          "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\delete_by_token.js",
+          "file": "\\test\\delete_by_token.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should delete user with valid authorization and return success message",
+              "fullTitle": "positive testing block:Delete User API by token  should delete user with valid authorization and return success message",
+              "timedOut": false,
+              "duration": 9,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "request[\"delete\"]('/api/v1/users').set('Authorization', authToken).expect(200).end(function (err, res) {\n  if (err) {\n    console.error('Error:', err);\n    console.error('Response body:', res.body);\n    return done(err);\n  }\n  var responseBody = res.body;\n  if (responseBody.message !== 'User deleted with success!') {\n    console.error('Unexpected message in response:', responseBody);\n    return done(new Error('Unexpected message in response'));\n  }\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
+              "err": {},
+              "uuid": "2783d607-8f89-498a-98eb-546b36ddfa02",
+              "parentUUID": "e0ddae4c-5743-4b71-a285-d3552f4fe074",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2783d607-8f89-498a-98eb-546b36ddfa02"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "fd512cb8-51e6-4a85-888a-8701cfb8b407",
+          "title": "negative testing block:Delete User API",
+          "fullFile": "C:\\Users\\Maria\\OneDrive - Faculty of Engineering Ain Shams University\\Desktop\\SDET_Task_Mariam_Waleed\\API_TEST\\test\\delete_by_token.js",
+          "file": "\\test\\delete_by_token.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "testcas_2: token sent invalid",
+              "fullTitle": "negative testing block:Delete User API testcas_2: token sent invalid",
+              "timedOut": false,
+              "duration": 3,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var invalidToken = 'invalid_token';\nrequest[\"delete\"]('/api/v1/users').set('Authorization', invalidToken).expect(403).end(function (err, res) {\n  if (err) {\n    console.error('Error:', err);\n    console.error('Response body:', res.body);\n    return done(err);\n  }\n  var responseBody = res.body;\n  if (responseBody.message !== 'Unauthorized to delete') {\n    console.error('Unexpected message in response:', responseBody);\n    return done(new Error('Unexpected message in response'));\n  }\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
+              "err": {},
+              "uuid": "27fb46f8-383c-4100-8875-70a83bd02fdc",
+              "parentUUID": "fd512cb8-51e6-4a85-888a-8701cfb8b407",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "testcas_3: no token sent as header auth",
+              "fullTitle": "negative testing block:Delete User API testcas_3: no token sent as header auth",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "request[\"delete\"]('/api/v1/users').expect(403).end(function (err, res) {\n  if (err) {\n    console.error('Error:', err);\n    console.error('Response body:', res.body);\n    return done(err);\n  }\n  var responseBody = res.body;\n  if (responseBody.message !== 'Unauthorized to delete') {\n    console.error('Unexpected message in response:', responseBody);\n    return done(new Error('Unexpected message in response'));\n  }\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
+              "err": {},
+              "uuid": "bfaeb88e-fc9a-4872-bbb3-6012bc3b3fa4",
+              "parentUUID": "fd512cb8-51e6-4a85-888a-8701cfb8b407",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "testcas_3: token sent valid but wrong",
+              "fullTitle": "negative testing block:Delete User API testcas_3: token sent valid but wrong",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var WRONGToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwiaWQiOjk2NDQ3LCJpYXQiOjE3MTU2MTQ0MDAsImV4cCI6MTcxNTcwMDgwMH0.BIkV-TndTt9En6uThDUQnNR5iYtW21vD1tEZ5ZxcaFg';\nrequest[\"delete\"]('/api/v1/users').set('Authorization', WRONGToken).expect(403).end(function (err, res) {\n  if (err) {\n    console.error('Error:', err);\n    console.error('Response body:', res.body);\n    return done(err);\n  }\n  var responseBody = res.body;\n  if (responseBody.message !== 'Unauthorized to delete') {\n    console.error('Unexpected message in response:', responseBody);\n    return done(new Error('Unexpected message in response'));\n  }\n  console.log('Response message:', responseBody.message); // Display the response message\n  done();\n});",
+              "err": {},
+              "uuid": "54ed22ea-2904-44a0-8706-7aa1cf3237f1",
+              "parentUUID": "fd512cb8-51e6-4a85-888a-8701cfb8b407",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "27fb46f8-383c-4100-8875-70a83bd02fdc",
+            "bfaeb88e-fc9a-4872-bbb3-6012bc3b3fa4",
+            "54ed22ea-2904-44a0-8706-7aa1cf3237f1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 11,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "delete_by_token_report.html",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports",
+        "reportFilename": "delete_by_token_report.html"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
