@@ -22,7 +22,7 @@ module.exports = {
       {
         selectFilter(selector, value) {
           const page = this;
-          page.click(selector).click(`.form-control option[value="${value}"]`);
+          page.click(selector).click(`.form-control option[value="${value}"]`); //from class form control <option value ="i"
   
           return this;
         },

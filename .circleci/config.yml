@@ -10,6 +10,7 @@ jobs:
     working_directory: ~/SDET-Technical-Task-2024/UI_Testing
     docker:
       - image: cimg/node:lts-browsers
+    parallelism: 2
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
@@ -32,6 +33,7 @@ jobs:
     working_directory: ~/SDET-Technical-Task-2024/API_TEST
     docker:
       - image: circleci/node:latest
+    parallelism: 2
     steps:
       - checkout:
           path: ~/SDET-Technical-Task-2024
