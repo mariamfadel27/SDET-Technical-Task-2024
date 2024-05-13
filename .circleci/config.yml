@@ -13,6 +13,8 @@ jobs:
     parallelism: 2
     steps:
       - browser-tools/install-geckodriver
+        install-dir: /usr/local/bin
+        version: v0.23.0
       - checkout:
           path: ~/SDET-Technical-Task-2024
       - node/install-packages:
