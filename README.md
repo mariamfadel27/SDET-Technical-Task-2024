@@ -1,7 +1,7 @@
 
-[![CircleCI](https://circleci.com/gh/mariamfadel27/SDET-Technical-Task-2024.svg?style=svg)](https://app.circleci.com/pipelines/github/mariamfadel27/SDET-Technical-Task-2024/132/workflows/f7484a55-f22f-410d-9f7a-5baceaee0691/jobs/108)
+[![CircleCI](https://circleci.com/gh/mariamfadel27/SDET-Technical-Task-2024.svg?style=svg)](https://app.circleci.com/pipelines/github/mariamfadel27/SDET-Technical-Task-2024/141/workflows/d38c3ecc-1a58-4fb8-80fe-8cd51e1c4961/jobs/123)
 
-[![CircleCI](https://circleci.com/gh/mariamfadel27/SDET-Technical-Task-2024.svg?style=svg)](https://app.circleci.com/pipelines/github/mariamfadel27/SDET-Technical-Task-2024/132/workflows/f7484a55-f22f-410d-9f7a-5baceaee0691/jobs/107)
+[![CircleCI](https://circleci.com/gh/mariamfadel27/SDET-Technical-Task-2024.svg?style=svg)](https://app.circleci.com/pipelines/github/mariamfadel27/SDET-Technical-Task-2024/141/workflows/d38c3ecc-1a58-4fb8-80fe-8cd51e1c4961/jobs/124)
 # SDET 2024 - Technical Task
 this project tests a website by end to end testing approach by using NightwatchJS
 & the API routes using mocha with Supertest. 
