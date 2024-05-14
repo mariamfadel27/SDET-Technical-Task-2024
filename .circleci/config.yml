@@ -53,7 +53,7 @@ jobs:
           command: npm test
 
 workflows:
-  build:
+  test:
     jobs:
       - UI_TEST
       - APItests
