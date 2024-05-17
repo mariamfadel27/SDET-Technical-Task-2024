@@ -59,7 +59,6 @@ module.exports = {
         .selectFilter("@subjectHeadingDropDownSelector", WebMaster)
         
         .Set_Value("@messageSelector", "Test Case_3: failed to send this message,email is missed")
-        
         .click("@submitButtonSelector")
         
         .assert.visible("@Error_message")
